@@ -1,0 +1,40 @@
+fileFormatVersion: 2
+guid: 9e376d2f04534464090db44a3065b626
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: "{\"source\":\"\\\"use strict\\\";\\r\\nObject.defineProperty(exports,
+    \\\"__esModule\\\", { value: true });\\r\\nconst UnityEngine_1 = require(\\\"UnityEngine\\\");\\r\\nconst
+    ZEPETO_Script_1 = require(\\\"ZEPETO.Script\\\");\\r\\n// UI \uAC01 \uCC3D\uB4E4\uC740
+    \uC2A4\uD0C0\uD2B8 \uC2DC\uC810\uC5D0 UIMng \uAC01\uC790 \uB4F1\uB85D\uD55C\uB2E4.\\r\\n//
+    \uBAA8\uB4E0 UI \uCC3D gameobject \uB294 \uD65C\uC131\uD654 \uB41C \uC0C1\uD0DC\uB85C
+    \uC52C\uC5D0 \uC800\uC7A5 \uB418\uBA70 \uC2E4\uD589\uD55C\uB2E4. \\r\\nclass
+    UIMng extends ZEPETO_Script_1.ZepetoScriptBehaviour {\\r\\n    constructor()
+    {\\r\\n        super(...arguments);\\r\\n        this.panelMap = new Map();\\r\\n   
+    }\\r\\n    static get Instance() {\\r\\n        if (ZEPETO_Script_1.ZepetoScriptBehaviour.op_Equality(this.instance,
+    null)) {\\r\\n            var _obj = new UnityEngine_1.GameObject(\\\"UIMng\\\");\\r\\n           
+    UnityEngine_1.GameObject.DontDestroyOnLoad(_obj);\\r\\n            this.instance
+    = _obj.AddComponent($typeof(UIMng));\\r\\n        }\\r\\n        return this.instance;\\r\\n   
+    }\\r\\n    Awake() {\\r\\n        UIMng.instance = this;\\r\\n    }\\r\\n   
+    get LoadingCanvas() { return this.loadingCanvas; }\\r\\n    AddPanel(name, panel)
+    {\\r\\n        if (this.panelMap.has(name) == true) {\\r\\n            return;\\r\\n       
+    }\\r\\n        this.panelMap.set(name, panel);\\r\\n    }\\r\\n    GetPanel(name)
+    {\\r\\n        return this.panelMap.get(name);\\r\\n    }\\r\\n}\\r\\nexports.default
+    = UIMng;\\r\\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiVUlNbmcuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJVSU1uZy50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOztBQUFBLDZDQUFpRDtBQUdqRCxpREFBcUQ7QUFHckQsa0NBQWtDO0FBQ2xDLGlEQUFpRDtBQUNqRCxNQUFxQixLQUFNLFNBQVEscUNBQXFCO0lBQXhEOztRQWVXLGFBQVEsR0FBcUIsSUFBSSxHQUFHLEVBQWUsQ0FBQztJQWlCL0QsQ0FBQztJQTlCVSxNQUFNLEtBQUssUUFBUTtRQUN0QixJQVJDLHFDQUFxQixDQXFDbWpMLFdBQVksQ0E3QmpsTCxJQUFJLENBQUMsUUFBUSxFQUFJLElBQUksR0FBRTtZQUN2QixJQUFJLElBQUksR0FBRyxJQUFJLHdCQUFVLENBQUMsT0FBTyxDQUFDLENBQUM7WUFDbkMsd0JBQVUsQ0FBQyxpQkFBaUIsQ0FBQyxJQUFJLENBQUMsQ0FBQztZQUNuQyxJQUFJLENBQUMsUUFBUSxHQUFHLElBQUksQ0FBQyxZQUFZLFNBQUMsS0FBSyxFQUFHLENBQUM7U0FDOUM7UUFFRCxPQUFPLElBQUksQ0FBQyxRQUFRLENBQUM7SUFDekIsQ0FBQztJQUNELEtBQUs7UUFDRCxLQUFLLENBQUMsUUFBUSxHQUFHLElBQUksQ0FBQztJQUUxQixDQUFDO0lBR0QsSUFBSSxhQUFhLEtBQWlCLE9BQU8sSUFBSSxDQUFDLGFBQWEsQ0FBQyxDQUFDLENBQUM7SUFNOUQsUUFBUSxDQUFJLElBQVksRUFBRSxLQUFRO1FBQzlCLElBQUksSUFBSSxDQUFDLFFBQVEsQ0FBQyxHQUFHLENBQUMsSUFBSSxDQUFDLElBQUksSUFBSSxFQUFFO1lBQ2pDLE9BQU87U0FDVjtRQUNELElBQUksQ0FBQyxRQUFRLENBQUMsR0FBRyxDQUFDLElBQUksRUFBRSxLQUFLLENBQUMsQ0FBQztJQUNuQyxDQUFDO0lBQ0QsUUFBUSxDQUFJLElBQVk7UUFDcEIsT0FBTyxJQUFJLENBQUMsUUFBUSxDQUFDLEdBQUcsQ0FBQyxJQUFJLENBQUMsQ0FBQztJQUNuQyxDQUFDO0NBQ0o7QUFoQ0Qsd0JBZ0NDIn0=\",\"assetPath\":\"Assets/_Scripts/Manager/UIMng.ts\",\"manifest\":{\"properties\":[{\"assembly\":\"UnityEngine.CoreModule\",\"name\":\"loadingCanvas\",\"type\":\"UnityEngine.GameObject\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]},{\"assembly\":\"ZEPETO.Character.Controller\",\"name\":\"UIZepetoPlayerControl\",\"type\":\"ZEPETO.Character.Controller.UIZepetoPlayerControl\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]},{\"assembly\":\"ZEPETO.Character.Controller\",\"name\":\"zepetoScreenPad\",\"type\":\"ZEPETO.Character.Controller.ZepetoScreenTouchpad\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]}],\"name\":\"UIMng\",\"description\":\"\",\"hasAnimatorMove\":false},\"isCompiled\":true}"
+  typescriptHash: 8c90dbcc801b0b4307e504fb7d9f20da
+  onlyWriteTrigger: 0

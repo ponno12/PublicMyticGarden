@@ -1,0 +1,55 @@
+fileFormatVersion: 2
+guid: fdca151bff890184d9746d393fd99c35
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: "{\"source\":\"\\\"use strict\\\";\\r\\nObject.defineProperty(exports,
+    \\\"__esModule\\\", { value: true });\\r\\nconst ZEPETO_Script_1 = require(\\\"ZEPETO.Script\\\");\\r\\nconst
+    ZEPETO_Character_Controller_1 = require(\\\"ZEPETO.Character.Controller\\\");\\r\\nconst
+    UnityEngine_1 = require(\\\"UnityEngine\\\");\\r\\nclass JumpController extends
+    ZEPETO_Script_1.ZepetoScriptBehaviour {\\r\\n    constructor() {\\r\\n       
+    super(...arguments);\\r\\n        this.jumpPower = 1;\\r\\n        this.cooltime
+    = 0.5;\\r\\n    }\\r\\n    Start() {\\r\\n        ZEPETO_Character_Controller_1.ZepetoPlayers.instance.OnAddedLocalPlayer.AddListener(()
+    => {\\r\\n            this.myCharacter = ZEPETO_Character_Controller_1.ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character;\\r\\n           
+    this.localPlayerTr = ZEPETO_Character_Controller_1.ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character.transform;\\r\\n           
+    // Disable the ZEPETO camera\\r\\n            ZEPETO_Character_Controller_1.ZepetoPlayers.instance.LocalPlayer.zepetoCamera.gameObject.SetActive(false);\\r\\n           
+    this.myCharacter.characterController.enabled = false;\\r\\n            let ani
+    = this.localPlayerTr.gameObject.AddComponent($typeof(UnityEngine_1.Animator));\\r\\n       
+    });\\r\\n    }\\r\\n    *JumpTwice() {\\r\\n        let tempTime = 0;\\r\\n       
+    let toward = -1;\\r\\n        this.originTranform = this.myCharacter.transform;\\r\\n       
+    while (true) {\\r\\n            if (tempTime >= this.cooltime) {\\r\\n               
+    //this.myCharacter.Teleport(this.originTranform.position + new Vector3(this.jumpPower
+    * toward, this.myCharacter.transform.position.y + 1, 0), Quaternion.identity);\\r\\n               
+    this.myCharacter.transform.position = UnityEngine_1.Vector3.op_Addition(this.originTranform.position,
+    new UnityEngine_1.Vector3(this.jumpPower * toward, 0, 0)\\r\\n               
+    //this.myCharacter.ChangeStateAnimation(CharacterState.Jump);\\r\\n               
+    );\\r\\n                //this.myCharacter.ChangeStateAnimation(CharacterState.Jump);\\r\\n               
+    this.animator.SetInteger(\\\"State\\\", ZEPETO_Character_Controller_1.CharacterState.Jump);\\r\\n               
+    tempTime = 0;\\r\\n                toward *= -1;\\r\\n            }\\r\\n           
+    tempTime += UnityEngine_1.Time.deltaTime;\\r\\n            yield new UnityEngine_1.WaitForEndOfFrame();\\r\\n       
+    }\\r\\n    }\\r\\n    OnGUI() {\\r\\n        if (UnityEngine_1.GUI.Button(new
+    UnityEngine_1.Rect(10, 10, 150, 100), \\\"\uC2DC\uC791\\\")) {\\r\\n           
+    this.StartCoroutine(this.JumpTwice());\\r\\n        }\\r\\n    }\\r\\n    LateUpdate()
+    {\\r\\n        if (this.localPlayerTr != null) {\\r\\n            console.log(`tranform
+    x : ${this.myCharacter.transform.position.x} y : ${this.myCharacter.transform.position.x}
+    z : ${this.myCharacter.transform.position.x}`);\\r\\n            this.customCamera.transform.position
+    = new UnityEngine_1.Vector3(this.localPlayerTr.position.x, this.customCamera.transform.position.y,
+    this.localPlayerTr.position.z - 4);\\r\\n        }\\r\\n    }\\r\\n}\\r\\nexports.default
+    = JumpController;\\r\\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiSnVtcENvbnRyb2xsZXIuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJKdW1wQ29udHJvbGxlci50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOztBQUFBLGlEQUFxRDtBQUNyRCw2RUFBNkY7QUFDN0YsNkNBQXNJO0FBRXRJLE1BQXFCLGNBQWUsU0FBUSxxQ0FBcUI7SUFBakU7O1FBUVcsY0FBUyxHQUFXLENBQUMsQ0FBQztRQUN0QixhQUFRLEdBQVcsR0FBRyxDQUFDO0lBb0RsQyxDQUFDO0lBL0NHLEtBQUs7UUFDRCwyQ0FBYSxDQUFDLFFBQVEsQ0FBQyxrQkFBa0IsQ0FBQyxXQUFXLENBQUMsR0FBRyxFQUFFO1lBQ3ZELElBQUksQ0FBQyxXQUFXLEdBQUcsMkNBQWEsQ0FBQyxRQUFRLENBQUMsV0FBVyxDQUFDLFlBQVksQ0FBQyxTQUFTLENBQUM7WUFDN0UsSUFBSSxDQUFDLGFBQWEsR0FBRywyQ0FBYSxDQUFDLFFBQVEsQ0FBQyxXQUFXLENBQUMsWUFBWSxDQUFDLFNBQVMsQ0FBQyxTQUFTLENBQUM7WUFDekYsNEJBQTRCO1lBQzVCLDJDQUFhLENBQUMsUUFBUSxDQUFDLFdBQVcsQ0FBQyxZQUFZLENBQUMsVUFBVSxDQUFDLFNBQVMsQ0FBQyxLQUFLLENBQUMsQ0FBQztZQUM1RSxJQUFJLENBQUMsV0FBVyxDQUFDLG1CQUFtQixDQUFDLE9BQU8sR0FBRyxLQUFLLENBQUM7WUFDckQsSUFBSSxHQUFHLEdBQUcsSUFBSSxDQUFDLGFBQWEsQ0FBQyxVQUFVLENBQUMsWUFBWSxTQUFDLHNCQUFRLEVBQUcsQ0FBQztRQUNyRSxDQUFDLENBQUMsQ0FBQztJQUdQLENBQUM7SUFDRCxDQUFDLFNBQVM7UUFDTixJQUFJLFFBQVEsR0FBRyxDQUFDLENBQUM7UUFDakIsSUFBSSxNQUFNLEdBQUcsQ0FBQyxDQUFDLENBQUM7UUFDaEIsSUFBSSxDQUFDLGNBQWMsR0FBRyxJQUFJLENBQUMsV0FBVyxDQUFDLFNBQVMsQ0FBQztRQUNqRCxPQUFPLElBQUksRUFBRTtZQUNULElBQUksUUFBUSxJQUFJLElBQUksQ0FBQyxRQUFRLEVBQUU7Z0JBQzNCLG9LQUFvSztnQkFDcEssSUFBSSxDQUFDLFdBQVcsQ0FBQyxTQUFTLENBQUMsUUFBUSxHQW5DaUIscUJBQU8sQ0ErRG1pbUIsV0FBWSxDQTVCcGttQixJQUFJLENBQUMsY0FBYyxDQUFDLFFBQVEsRUFBRyxJQUFJLHFCQUFPLENBQUMsSUFBSSxDQUFDLFNBQVMsR0FBRyxNQUFNLEVBQUUsQ0FBQyxFQUFFLENBQUMsQ0FBQztnQkFDL0csNkRBQTZEO2lCQURrRCxDQUFBO2dCQUMvRyw2REFBNkQ7Z0JBQzdELElBQUksQ0FBQyxRQUFRLENBQUMsVUFBVSxDQUFDLE9BQU8sRUFBQyw0Q0FBYyxDQUFDLElBQUksQ0FBQyxDQUFDO2dCQUV0RCxRQUFRLEdBQUcsQ0FBQyxDQUFDO2dCQUNiLE1BQU0sSUFBSSxDQUFDLENBQUMsQ0FBQzthQUNoQjtZQUNELFFBQVEsSUFBSSxrQkFBSSxDQUFDLFNBQVMsQ0FBQztZQUMzQixNQUFNLElBQUksK0JBQWlCLEVBQUUsQ0FBQztTQUNqQztJQUNMLENBQUM7SUFFRCxLQUFLO1FBQ0QsSUFBSSxpQkFBRyxDQUFDLE1BQU0sQ0FBQyxJQUFJLGtCQUFJLENBQUMsRUFBRSxFQUFFLEVBQUUsRUFBRSxHQUFHLEVBQUUsR0FBRyxDQUFDLEVBQUUsSUFBSSxDQUFDLEVBQUU7WUFDOUMsSUFBSSxDQUFDLGNBQWMsQ0FBQyxJQUFJLENBQUMsU0FBUyxFQUFFLENBQUMsQ0FBQztTQUN6QztJQUNMLENBQUM7SUFNRCxVQUFVO1FBQ04sSUFBSSxJQUFJLENBQUMsYUFBYSxJQUFJLElBQUksRUFBRTtZQUM1QixPQUFPLENBQUMsR0FBRyxDQUFDLGdCQUFnQixJQUFJLENBQUMsV0FBVyxDQUFDLFNBQVMsQ0FBQyxRQUFRLENBQUMsQ0FBQyxRQUFRLElBQUksQ0FBQyxXQUFXLENBQUMsU0FBUyxDQUFDLFFBQVEsQ0FBQyxDQUFDLFFBQVEsSUFBSSxDQUFDLFdBQVcsQ0FBQyxTQUFTLENBQUMsUUFBUSxDQUFDLENBQUMsRUFBRSxDQUFDLENBQUM7WUFDL0osSUFBSSxDQUFDLFlBQVksQ0FBQyxTQUFTLENBQUMsUUFBUSxHQUFHLElBQUkscUJBQU8sQ0FBQyxJQUFJLENBQUMsYUFBYSxDQUFDLFFBQVEsQ0FBQyxDQUFDLEVBQUUsSUFBSSxDQUFDLFlBQVksQ0FBQyxTQUFTLENBQUMsUUFBUSxDQUFDLENBQUMsRUFBRSxJQUFJLENBQUMsYUFBYSxDQUFDLFFBQVEsQ0FBQyxDQUFDLEdBQUcsQ0FBQyxDQUFDLENBQUM7U0FDaEs7SUFDTCxDQUFDO0NBQ0o7QUE3REQsaUNBNkRDIn0=\",\"assetPath\":\"Assets/_Scripts/Controller/JumpController.ts\",\"manifest\":{\"properties\":[{\"assembly\":\"UnityEngine.CoreModule\",\"name\":\"customCamera\",\"type\":\"UnityEngine.Camera\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]},{\"assembly\":\"mscorlib\",\"name\":\"jumpPower\",\"type\":\"System.Single\",\"isArray\":false,\"initValue\":[\"1\"],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]},{\"assembly\":\"mscorlib\",\"name\":\"cooltime\",\"type\":\"System.Single\",\"isArray\":false,\"initValue\":[\"0.5\"],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]},{\"assembly\":\"UnityEngine.AnimationModule\",\"name\":\"animator\",\"type\":\"UnityEngine.Animator\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]}],\"name\":\"JumpController\",\"description\":\"\",\"hasAnimatorMove\":false},\"isCompiled\":true}"
+  typescriptHash: 6cf448bf7b2cd76cb6827d627eff51b7
+  onlyWriteTrigger: 0

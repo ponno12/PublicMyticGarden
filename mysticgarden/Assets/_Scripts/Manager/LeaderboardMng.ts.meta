@@ -1,0 +1,93 @@
+fileFormatVersion: 2
+guid: d5e8b62b9d38f1e44877d939fe395382
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: "{\"source\":\"\\\"use strict\\\";\\r\\nObject.defineProperty(exports,
+    \\\"__esModule\\\", { value: true });\\r\\nconst ZEPETO_Script_1 = require(\\\"ZEPETO.Script\\\");\\r\\nconst
+    UnityEngine_1 = require(\\\"UnityEngine\\\");\\r\\nconst ZEPETO_Script_Leaderboard_1
+    = require(\\\"ZEPETO.Script.Leaderboard\\\");\\r\\nconst ZEPETO_World_1 = require(\\\"ZEPETO.World\\\");\\r\\nconst
+    UnityEngine_2 = require(\\\"UnityEngine\\\");\\r\\nconst Panel_Leaderboard_1
+    = require(\\\"../UI/Panel_Leaderboard\\\");\\r\\nconst LeaderBoardCtr_1 = require(\\\"../UI/Controller/LeaderBoardCtr\\\");\\r\\nconst
+    Utils_1 = require(\\\"../Utils\\\");\\r\\nconst Define_1 = require(\\\"../Define\\\");\\r\\nclass
+    LeaderboardMng extends ZEPETO_Script_1.ZepetoScriptBehaviour {\\r\\n    constructor()
+    {\\r\\n        super(...arguments);\\r\\n        this.myWorldScore = 0;\\r\\n       
+    this.localRanking = new Map();\\r\\n    }\\r\\n    static get Instance() {\\r\\n       
+    if (ZEPETO_Script_1.ZepetoScriptBehaviour.op_Equality(this.instance, null)) {\\r\\n           
+    var _obj = new UnityEngine_1.GameObject(\\\"LeaderboardMng\\\");\\r\\n           
+    UnityEngine_1.GameObject.DontDestroyOnLoad(_obj);\\r\\n            this.instance
+    = _obj.AddComponent($typeof(LeaderboardMng));\\r\\n        }\\r\\n        return
+    this.instance;\\r\\n    }\\r\\n    get LocalRanking() { return this.localRanking;
+    }\\r\\n    get WorldRankUser() { return this.worldRankUser; }\\r\\n    ;\\r\\n   
+    set WorldRankUser(data) { this.worldRankUser = data; }\\r\\n    get UserSprite()
+    { return this.userSprite; }\\r\\n    ;\\r\\n    Awake() {\\r\\n        LeaderboardMng.instance
+    = this;\\r\\n        this.localRanking = new Map();\\r\\n        this.localUserID
+    = new Set();\\r\\n    }\\r\\n    SetScore() {\\r\\n        //LeaderboardAPI.SetScore(this.leaderboardId,
+    siniEquipatk, this.OnSetScoreInit, this.OnError);\\r\\n    }\\r\\n    GetRank()
+    {\\r\\n        ZEPETO_Script_Leaderboard_1.LeaderboardAPI.GetRangeRank(this.leaderboardId,
+    this.startRank, this.endRank, this.resetRule, false, this.OnGetRankResult, this.OnError);\\r\\n   
+    }\\r\\n    GetInitRank() {\\r\\n        this.SetScore();\\r\\n        ZEPETO_Script_Leaderboard_1.LeaderboardAPI.GetRangeRank(this.leaderboardId,
+    this.startRank, this.endRank, this.resetRule, false, this.OnGetInitRankResult,
+    this.onInitRankError);\\r\\n    }\\r\\n    OnSetScoreResult(result) {\\r\\n       
+    LeaderboardMng.Instance.GetRank();\\r\\n    }\\r\\n    GetAllLeaderBoard() {\\r\\n       
+    ZEPETO_Script_Leaderboard_1.LeaderboardAPI.GetAllLeaderboards(this.OnGetAllResult,
+    this.OnError);\\r\\n    }\\r\\n    GetLeaderboard(leaderboardId) {\\r\\n       
+    ZEPETO_Script_Leaderboard_1.LeaderboardAPI.GetLeaderboard(leaderboardId, this.OnGetResult,
+    this.OnError);\\r\\n    }\\r\\n    //\uB9AC\uB354\uBCF4\uB4DC \uC548\uC5D0 \uC788\uB294
+    \uC815\uBCF4\uAC00 \uC544\uB2C8\uB77C \uB9AC\uB354 \uBCF4\uB4DC\uB4E4 \uC790\uCCB4\uC758
+    \uB370\uC774\uD130\uB97C \uAC00\uC838\uC634\\r\\n    OnGetAllResult(result) {\\r\\n       
+    if (result.leaderboards) {\\r\\n            for (let i = 0; i < result.leaderboards.length;
+    ++i) {\\r\\n                const leaderboard = result.leaderboards[i];\\r\\n           
+    }\\r\\n        }\\r\\n    }\\r\\n    //\uB9AC\uB354\uBCF4\uB4DC\uC5D0 \uB300\uD55C
+    \uC815\uBCF4 \uB9AC\uB354\uBCF4\uB4DC\uB97C \uC5EC\uB7EC\uAC1C \uC548\uC4F0\uBA74
+    \uC4F8\uC77C \uC5C6\uC74C\\r\\n    OnGetResult(result) {\\r\\n        if (result.leaderboard)
+    {\\r\\n            console.log(`id: ${result.leaderboard.id}, name: ${result.leaderboard.name}`);\\r\\n       
+    }\\r\\n    }\\r\\n    OnError(error) {\\r\\n        Utils_1.Utils.Log(Define_1.Define.LogType.Log,
+    `[LeaderboardMng] Leaderboard  ${error} `);\\r\\n    }\\r\\n    onInitRankError(error)
+    {\\r\\n        Utils_1.Utils.Log(Define_1.Define.LogType.Error, `[LeaderboardMng]
+    WorldLeaderboard  ${error} `);\\r\\n        //GameMng.Instance.ChangeSubGameState(Define.GameSubState.Leaderboard_End);\\r\\n   
+    }\\r\\n    OnGetInitRankResult(result) {\\r\\n        LeaderboardMng.Instance.worldRankUser
+    = new Array();\\r\\n        //\uC804\uCCB4 \uC21C\uC704\uC5D0\uC11C \uB098\uC758
+    \uC815\uBCF4\uB97C \uAC00\uC838\uC634\\r\\n        if (result.rankInfo.myRank
+    != null) {\\r\\n            this.myWorldScore = result.rankInfo.myRank.score;\\r\\n       
+    }\\r\\n        if (result.rankInfo.rankList != null) {\\r\\n            for (const
+    rank of result.rankInfo.rankList) {\\r\\n                LeaderboardMng.Instance.worldRankUser.push(rank);\\r\\n           
+    }\\r\\n        }\\r\\n        LeaderboardMng.Instance.GetRollingImage();\\r\\n       
+    //GameMng.Instance.ChangeSubGameState(Define.GameSubState.Leaderboard_End);\\r\\n   
+    }\\r\\n    OnGetRankResult(result) {\\r\\n        LeaderboardMng.Instance.worldRankUser
+    = new Array();\\r\\n        if (result.rankInfo.myRank != null) {\\r\\n           
+    this.myWorldScore = result.rankInfo.myRank.score;\\r\\n        }\\r\\n       
+    //\uC804\uCCB4 \uC21C\uC704\uC5D0\uC11C \uB098\uC758 \uC815\uBCF4\uB97C \uAC00\uC838\uC634\\r\\n       
+    if (result.rankInfo.rankList) {\\r\\n            for (const rank of result.rankInfo.rankList)
+    {\\r\\n                LeaderboardMng.Instance.worldRankUser.push(rank);\\r\\n           
+    }\\r\\n        }\\r\\n        if (ZEPETO_Script_1.ZepetoScriptBehaviour.op_Inequality(LeaderboardMng.Instance.panel_leaderboard,
+    null)) {\\r\\n            LeaderboardMng.Instance.panel_leaderboard.SetRankingBoard();\\r\\n       
+    }\\r\\n    }\\r\\n    // \uC720\uC800\uB4E4\uC758 \uD504\uB85C\uD544 \uC815\uBCF4
+    \uC5BB\uAE30 \uAC00\uC6B4\uB370 \uAC70\uC6B8\uC744 \uC720\uC800 \uC774\uBBF8\uC9C0\uB85C
+    \uBC14\uAFB8\uAC8C \uB418\uBA74 \uC0AC\uC6A9\\r\\n    GetRollingImage() {\\r\\n       
+    for (let i = 0; i < this.worldRankUser.length; i++) {\\r\\n            ZEPETO_World_1.ZepetoWorldHelper.GetProfileTexture(this.WorldRankUser[i].member,
+    (texture) => {\\r\\n                this.userSprite[i] = this.GetSprite(texture);\\r\\n           
+    }, (error) => {\\r\\n                console.log(error);\\r\\n            });\\r\\n       
+    }\\r\\n        //\uB9AC\uB354\uBCF4\uB4DC \uCD94\uAC00\uD560\uB54C \uB123\uC744
+    \uBA54\uC18C\uB4DC\\r\\n        //this.leaderboardCtr.SetRollingImage();\\r\\n   
+    }\\r\\n    GetSprite(texture) {\\r\\n        let rect = new UnityEngine_2.Rect(0,
+    0, texture.width, texture.height);\\r\\n        return UnityEngine_2.Sprite.Create(texture,
+    rect, new UnityEngine_2.Vector2(0.5, 0.5));\\r\\n    }\\r\\n}\\r\\nexports.default
+    = LeaderboardMng;\\r\\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiTGVhZGVyYm9hcmRNbmcuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJMZWFkZXJib2FyZE1uZy50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOztBQUFBLGlEQUFxRDtBQUNyRCw2Q0FBOEM7QUFDOUMseUVBQXFMO0FBQ3JMLCtDQUF3RDtBQUN4RCw2Q0FBd0U7QUFDeEUsK0RBQXdEO0FBQ3hELG9FQUE2RDtBQUU3RCxvQ0FBaUM7QUFDakMsc0NBQW1DO0FBR25DLE1BQXFCLGNBQWUsU0FBUSxxQ0FBcUI7SUFBakU7O1FBZ0JZLGlCQUFZLEdBQVcsQ0FBQyxDQUFDO1FBTXpCLGlCQUFZLEdBQXdCLElBQUksR0FBRyxFQUFrQixDQUFDO0lBZ0kxRSxDQUFDO0lBbkpVLE1BQU0sS0FBSyxRQUFRO1FBQ3RCLElBaEJDLHFDQUFxQixDQWtLNG9DLFdBQVksQ0FsSjFxQyxJQUFJLENBQUMsUUFBUSxFQUFJLElBQUksR0FBRTtZQUN2QixJQUFJLElBQUksR0FBRyxJQUFJLHdCQUFVLENBQUMsZ0JBQWdCLENBQUMsQ0FBQztZQUM1Qyx3QkFBVSxDQUFDLGlCQUFpQixDQUFDLElBQUksQ0FBQyxDQUFDO1lBQ25DLElBQUksQ0FBQyxRQUFRLEdBQUcsSUFBSSxDQUFDLFlBQVksU0FBQyxjQUFjLEVBQUcsQ0FBQztTQUN2RDtRQUVELE9BQU8sSUFBSSxDQUFDLFFBQVEsQ0FBQztJQUN6QixDQUFDO0lBWUQsSUFBSSxZQUFZLEtBQTBCLE9BQU8sSUFBSSxDQUFDLFlBQVksQ0FBQyxDQUFDLENBQUM7SUFJckUsSUFBSSxhQUFhLEtBQUssT0FBTyxJQUFJLENBQUMsYUFBYSxDQUFBLENBQUMsQ0FBQztJQUFBLENBQUM7SUFDbEQsSUFBSSxhQUFhLENBQUMsSUFBWSxJQUFJLElBQUksQ0FBQyxhQUFhLEdBQUcsSUFBSSxDQUFDLENBQUMsQ0FBQztJQUc5RCxJQUFJLFVBQVUsS0FBSyxPQUFPLElBQUksQ0FBQyxVQUFVLENBQUEsQ0FBQyxDQUFDO0lBQUEsQ0FBQztJ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\",\"assetPath\":\"Assets/_Scripts/Manager/LeaderboardMng.ts\",\"manifest\":{\"properties\":[{\"assembly\":\"mscorlib\",\"name\":\"leaderboardId\",\"type\":\"System.String\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]},{\"assembly\":\"mscorlib\",\"name\":\"startRank\",\"type\":\"System.Single\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]},{\"assembly\":\"mscorlib\",\"name\":\"endRank\",\"type\":\"System.Single\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]},{\"assembly\":\"ZEPETO.Script.Leaderboard\",\"name\":\"resetRule\",\"type\":\"ZEPETO.Script.Leaderboard.ResetRule\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]},{\"assembly\":\"\",\"name\":\"localUserID\",\"type\":\"Set\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]},{\"assembly\":\"UnityEngine.CoreModule\",\"name\":\"userSprite\",\"type\":\"UnityEngine.Sprite[]\",\"isArray\":true,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]},{\"assembly\":\"\",\"name\":\"panel_leaderboard\",\"type\":\"C:/Project/Q1/Assets/_Scripts/UI/Panel_Leaderboard.default\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]},{\"assembly\":\"\",\"name\":\"leaderboardCtr\",\"type\":\"C:/Project/Q1/Assets/_Scripts/UI/Controller/LeaderBoardCtr.default\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]}],\"name\":\"LeaderboardMng\",\"description\":\"\",\"hasAnimatorMove\":false},\"isCompiled\":true}"
+  typescriptHash: dabf607fe8297eec0055053b08aa58e1
+  onlyWriteTrigger: 0

@@ -1,0 +1,31 @@
+fileFormatVersion: 2
+guid: d1d3ab3c10ab7f44988a64be4cc5158a
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: "{\"source\":\"\\\"use strict\\\";\\r\\nObject.defineProperty(exports,
+    \\\"__esModule\\\", { value: true });\\r\\nconst ZEPETO_Script_1 = require(\\\"ZEPETO.Script\\\");\\r\\nconst
+    GameManager_1 = require(\\\"../Manager/GameManager\\\");\\r\\nclass GameViewCtr
+    extends ZEPETO_Script_1.ZepetoScriptBehaviour {\\r\\n    Awake() {\\r\\n       
+    GameManager_1.default.Instance.camera = this.gameViewCamera;\\r\\n        console.log(`\uCE74\uBA54\uB77C
+    \uC138\uD305 \uC644\uB8CC`);\\r\\n    }\\r\\n    Start() {\\r\\n        GameManager_1.default.Instance.camera
+    = this.gameViewCamera;\\r\\n        console.log(`\uCE74\uBA54\uB77C \uC138\uD305
+    \uC644\uB8CC`);\\r\\n    }\\r\\n}\\r\\nexports.default = GameViewCtr;\\r\\n//#
+    sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiR2FtZVZpZXdDdHIuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJHYW1lVmlld0N0ci50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOztBQUFBLGlEQUFxRDtBQUVyRCx3REFBaUQ7QUFFakQsTUFBcUIsV0FBWSxTQUFRLHFDQUFxQjtJQUkxRCxLQUFLO1FBQ0QscUJBQVcsQ0FBQyxRQUFRLENBQUMsTUFBTSxHQUFHLElBQUksQ0FBQyxjQUFjLENBQUM7UUFDbEQsT0FBTyxDQUFDLEdBQUcsQ0FBQyxXQUFXLENBQUMsQ0FBQztJQUM3QixDQUFDO0lBQ0QsS0FBSztRQUNELHFCQUFXLENBQUMsUUFBUSxDQUFDLE1BQU0sR0FBRyxJQUFJLENBQUMsY0FBYyxDQUFDO1FBQ2xELE9BQU8sQ0FBQyxHQUFHLENBQUMsV0FBVyxDQUFDLENBQUM7SUFDN0IsQ0FBQztDQUVKO0FBYkQsOEJBYUMifQ==\",\"assetPath\":\"Assets/_Scripts/Controller/GameViewCtr.ts\",\"manifest\":{\"properties\":[{\"assembly\":\"UnityEngine.CoreModule\",\"name\":\"gameViewCamera\",\"type\":\"UnityEngine.Camera\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]}],\"name\":\"GameViewCtr\",\"description\":\"\",\"hasAnimatorMove\":false},\"isCompiled\":true}"
+  typescriptHash: d52fabd434e55f67cbd4924f2a8f6dff
+  onlyWriteTrigger: 0

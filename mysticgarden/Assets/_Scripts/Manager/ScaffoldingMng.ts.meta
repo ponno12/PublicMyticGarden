@@ -1,0 +1,94 @@
+fileFormatVersion: 2
+guid: 9a3addfeb78699847986f1e2d96b7c46
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: "{\"source\":\"\\\"use strict\\\";\\r\\nObject.defineProperty(exports,
+    \\\"__esModule\\\", { value: true });\\r\\nconst __UnityEngine__ = require(\\\"UnityEngine\\\");\\r\\nconst
+    ZEPETO_Script_1 = require(\\\"ZEPETO.Script\\\");\\r\\nconst UnityEngine_1 =
+    require(\\\"UnityEngine\\\");\\r\\nconst Define_1 = require(\\\"../Define\\\");\\r\\nconst
+    ResourcesMng_1 = require(\\\"./ResourcesMng\\\");\\r\\nconst Tilecontroller_1
+    = require(\\\"../Controller/Tilecontroller\\\");\\r\\nconst TowerGameMng_1 =
+    require(\\\"./TowerGameMng\\\");\\r\\nclass ScaffoldingMng extends ZEPETO_Script_1.ZepetoScriptBehaviour
+    {\\r\\n    constructor() {\\r\\n        super(...arguments);\\r\\n        this.currentIndex
+    = 0;\\r\\n        this.currentWidth = 0;\\r\\n        this.startWidth = 15;\\r\\n       
+    this.tileCtrList = [];\\r\\n        this.releaseTileList = [];\\r\\n    }\\r\\n   
+    static get Instance() {\\r\\n        if (ZEPETO_Script_1.ZepetoScriptBehaviour.op_Equality(this.instance,
+    null)) {\\r\\n            var _obj = new UnityEngine_1.GameObject(\\\"ScaffoldingMng\\\");\\r\\n           
+    UnityEngine_1.GameObject.DontDestroyOnLoad(_obj);\\r\\n            this.instance
+    = _obj.AddComponent($typeof(ScaffoldingMng));\\r\\n        }\\r\\n        return
+    this.instance;\\r\\n    }\\r\\n    get TileCtrList() {\\r\\n        return this.tileCtrList;\\r\\n   
+    }\\r\\n    Awake() {\\r\\n        ScaffoldingMng.instance = this;\\r\\n    }\\r\\n   
+    // \uD0C0\uC77C \uD480\uB9C1\\r\\n    // \uCD08\uAE30\uAC12 \uC138\uD305, \uAC12
+    \uBC00\uC5B4\uC8FC\uAE30\\r\\n    Init() {\\r\\n        this.currentIndex = 0;\\r\\n       
+    this.currentWidth = 0;\\r\\n        //\uB0A8\uC544\uC788\uB294 \uD0C0\uC77C\uC774
+    \uC788\uC744\uACBD\uC6B0 \uBC00\uC5B4\uC8FC\uAE30 \uCCB4\uD06C\\r\\n        if
+    (this.tileCtrList.length > 0) {\\r\\n            for (let i = 0; i < this.tileCtrList.length;
+    i++) {\\r\\n                ResourcesMng_1.default.Instance.ReturnToPool(this.tileCtrList[i].gameObject.name,
+    this.tileCtrList[i].gameObject);\\r\\n            }\\r\\n        }\\r\\n       
+    if (this.releaseTileList.length > 0) {\\r\\n            for (let i = 0; i < this.releaseTileList.length;
+    i++) {\\r\\n                ResourcesMng_1.default.Instance.ReturnToPool(this.releaseTileList[i].gameObject.name,
+    this.releaseTileList[i].gameObject);\\r\\n            }\\r\\n        }\\r\\n       
+    this.tileCtrList = [];\\r\\n        this.releaseTileList = [];\\r\\n    }\\r\\n   
+    FirstCreateTile() {\\r\\n        this.currentWidth = this.startWidth;\\r\\n       
+    this.CreateTile(Define_1.Define.Direction.left);\\r\\n        for (let i = 0;
+    i < 19; i++) {\\r\\n            let rand = UnityEngine_1.Random.Range(0, 2);\\r\\n           
+    console.log(`rand value = ${rand}`);\\r\\n            if (rand <= 1) {\\r\\n               
+    this.CreateTile(Define_1.Define.Direction.left);\\r\\n            }\\r\\n           
+    else {\\r\\n                this.CreateTile(Define_1.Define.Direction.right);\\r\\n           
+    }\\r\\n        }\\r\\n    }\\r\\n    CreateTile(dir) {\\r\\n        this.currentIndex++;\\r\\n       
+    let tile = ResourcesMng_1.default.Instance.TakeFromPool(Define_1.Define.ObjectType.Tile,
+    \\\"Tile\\\");\\r\\n        let tileCtr = tile.GetComponent($typeof(Tilecontroller_1.default));\\r\\n       
+    if (__UnityEngine__.Object.op_Equality(tile, null)) {\\r\\n            console.error(`tile
+    Create null`);\\r\\n        }\\r\\n        tileCtr.index = this.currentIndex;\\r\\n       
+    switch (dir) {\\r\\n            case Define_1.Define.Direction.left:\\r\\n               
+    if (this.currentWidth <= 0) {\\r\\n                    this.currentWidth++;\\r\\n                   
+    break;\\r\\n                }\\r\\n                this.currentWidth--;\\r\\n               
+    break;\\r\\n            case Define_1.Define.Direction.right:\\r\\n               
+    if (this.currentWidth > 29) {\\r\\n                    this.currentWidth--;\\r\\n                   
+    break;\\r\\n                }\\r\\n                this.currentWidth++;\\r\\n               
+    break;\\r\\n            default:\\r\\n                break;\\r\\n        }\\r\\n       
+    tileCtr.width = this.currentWidth;\\r\\n        this.tileCtrList.push(tileCtr);\\r\\n       
+    tile.transform.localPosition = new UnityEngine_1.Vector3(-80 + (this.currentWidth
+    * 0.6), 0, this.currentIndex);\\r\\n        console.log(`\uD0C0\uC77C \uC0DD\uC131
+    \uC644\uB8CC current Index : ${this.currentIndex} currentWidht: ${this.currentWidth}`);\\r\\n       
+    return true;\\r\\n    }\\r\\n    // Update\uAC00 \uC544\uB2C8\uB77C \uD55C\uCE78\uC624\uB97C\uB54C\uB9C8\uB2E4
+    \uD655\uC778\uD558\uB294 \uC2DD\uC73C\uB85C \uAC00\uB294\uAC8C \uB9DE\uC74C.\\r\\n   
+    // Update() {\\r\\n    //     if (this.currentIndex < TowerGameMng.Instance.TileCount
+    + 15) {\\r\\n    //         let rand = Random.Range(0, 2);\\r\\n    //        
+    console.log(`rand value = ${rand}`);\\r\\n    //         if (rand <= 1) {\\r\\n   
+    //             this.CreateTile(Define.Direction.left);\\r\\n    //         }
+    else {\\r\\n    //             this.CreateTile(Define.Direction.right);\\r\\n   
+    //         }\\r\\n    //     }\\r\\n    // }\\r\\n    CheckCreateTile() {\\r\\n       
+    if (this.currentIndex <= TowerGameMng_1.default.Instance.TileCount + 15) {\\r\\n           
+    let rand = UnityEngine_1.Random.Range(0, 2);\\r\\n            if (rand <= 1)
+    {\\r\\n                let temp = Math.floor(UnityEngine_1.Random.Range(1, 4));\\r\\n               
+    for (let i = 0; i < temp; i++) {\\r\\n                    this.CreateTile(Define_1.Define.Direction.left);\\r\\n               
+    }\\r\\n                //this.CreateTile(Define.Direction.left);\\r\\n           
+    }\\r\\n            else {\\r\\n                //this.CreateTile(Define.Direction.right);\\r\\n               
+    let temp = Math.floor(UnityEngine_1.Random.Range(1, 4));\\r\\n               
+    for (let i = 0; i < temp; i++) {\\r\\n                    this.CreateTile(Define_1.Define.Direction.right);\\r\\n               
+    }\\r\\n            }\\r\\n        }\\r\\n        if (this.tileCtrList.length
+    >= 15) {\\r\\n            let release = this.tileCtrList.shift();\\r\\n           
+    this.releaseTileList.push(release);\\r\\n        }\\r\\n        if (this.releaseTileList.length
+    >= 5) {\\r\\n            let realase = this.releaseTileList.shift();\\r\\n           
+    console.log(`realeas tile info ${realase.width} , ${realase.index}`);\\r\\n           
+    ResourcesMng_1.default.Instance.ReturnToPool(realase.gameObject.name, realase.gameObject);\\r\\n       
+    }\\r\\n    }\\r\\n}\\r\\nexports.default = ScaffoldingMng;\\r\\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiU2NhZmZvbGRpbmdNbmcuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJTY2FmZm9sZGluZ01uZy50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7QUFBQSxpREFBcUQ7QUFDckQsNkNBQWlFO0FBQ2pFLHNDQUFtQztBQUNuQyxpREFBMEM7QUFDMUMsaUVBQTBEO0FBQzFELGlEQUEwQztBQUUxQyxNQUFxQixjQUFlLFNBQVEscUNBQXFCO0lBQWpFOztRQWFZLGlCQUFZLEdBQVcsQ0FBQyxDQUFDO1FBQ3pCLGlCQUFZLEdBQVcsQ0FBQyxDQUFDO1FBQzFCLGVBQVUsR0FBVyxFQUFFLENBQUM7UUFFdkIsZ0JBQVcsR0FBcUIsRUFBRSxDQUFDO1FBSW5DLG9CQUFlLEdBQXFCLEVBQUUsQ0FBQztJQXVJbkQsQ0FBQztJQXpKVSxNQUFNLEtBQUssUUFBUTtRQUN0QixJQVhDLHFDQUFxQixDQW1Lb3VELFdBQVksQ0F4Smx3RCxJQUFJLENBQUMsUUFBUSxFQUFJLElBQUksR0FBRTtZQUN2QixJQUFJLElBQUksR0FBRyxJQUFJLHdCQUFVLENBQUMsZ0JBQWdCLENBQUMsQ0FBQztZQUM1Qyx3QkFBVSxDQUFDLGlCQUFpQixDQUFDLElBQUksQ0FBQyxDQUFDO1lBQ25DLElBQUksQ0FBQyxRQUFRLEdBQUcsSUFBSSxDQUFDLFlBQVksU0FBQyxjQUFjLEVBQUcsQ0FBQztTQUN2RDtRQUVELE9BQU8sSUFBSSxDQUFDLFFBQVEsQ0FBQztJQUN6QixDQUFDO0lBT0QsSUFBVyxXQUFXO1FBQ2xCLE9BQU8sSUFBSSxDQUFDLFdBQVcsQ0FBQztJQUM1QixDQUFDO0lBR0QsS0FBSztRQUNELGNBQWMsQ0FBQyxRQUFRLEdBQUcsSUFBSSxDQUFDO0lBRW5DLENBQUM7SUFFRCxRQUFRO0lBRVIsaUJBQWlCO0lBQ2pCLElBQUk7UUFDQSxJQUFJLENBQUMsWUFBWSxHQUFHLENBQUMsQ0FBQztRQUN0QixJQUFJLENBQUMsWUFBWSxHQUFHLENBQUMsQ0FBQztRQUd0Qix1QkFBdUI7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\",\"assetPath\":\"Assets/_Scripts/Manager/ScaffoldingMng.ts\",\"manifest\":{\"properties\":[{\"assembly\":\"mscorlib\",\"name\":\"startWidth\",\"type\":\"System.Single\",\"isArray\":false,\"initValue\":[\"15\"],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]}],\"name\":\"ScaffoldingMng\",\"description\":\"\",\"hasAnimatorMove\":false},\"isCompiled\":true}"
+  typescriptHash: 7988ffbd1e3f9bbcd247458a5f1300ca
+  onlyWriteTrigger: 0

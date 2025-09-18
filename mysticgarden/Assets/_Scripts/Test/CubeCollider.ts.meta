@@ -1,0 +1,29 @@
+fileFormatVersion: 2
+guid: a0e24352d59f25d459ebf32935207b0f
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: '{"source":"\"use strict\";\r\nObject.defineProperty(exports, \"__esModule\",
+    { value: true });\r\nconst ZEPETO_Script_1 = require(\"ZEPETO.Script\");\r\nconst
+    UnityEngine_1 = require(\"UnityEngine\");\r\nconst UIMng_1 = require(\"../Manager/UIMng\");\r\nclass
+    CubeCollider extends ZEPETO_Script_1.ZepetoScriptBehaviour {\r\n    OnTriggerEnter(coll)
+    {\r\n        if (coll.tag == \"Player\") {\r\n            let panel = UIMng_1.default.Instance.GetPanel(\"Panel_choise\");\r\n           
+    panel.SetActive(true);\r\n        }\r\n    }\r\n}\r\nexports.default = CubeCollider;\r\n//#
+    sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiQ3ViZUNvbGxpZGVyLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiQ3ViZUNvbGxpZGVyLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7O0FBQUEsaURBQXFEO0FBQ3JELDZDQUFtRDtBQUduRCw0Q0FBcUM7QUFHckMsTUFBcUIsWUFBYSxTQUFRLHFDQUFxQjtJQUUzRCxjQUFjLENBQUMsSUFBYztRQUN6QixJQUFJLElBQUksQ0FBQyxHQUFHLElBQUksUUFBUSxFQUFFO1lBQ3RCLElBQUksS0FBSyxHQUFHLGVBQUssQ0FBQyxRQUFRLENBQUMsUUFBUSxDQUFlLGNBQWMsQ0FBQyxDQUFDO1lBQ2xFLEtBQUssQ0FBQyxTQUFTLENBQUMsSUFBSSxDQUFDLENBQUM7U0FDekI7SUFDTCxDQUFDO0NBRUo7QUFURCwrQkFTQyJ9","assetPath":"Assets/_Scripts/Test/CubeCollider.ts","manifest":{"properties":[],"name":"CubeCollider","description":"","hasAnimatorMove":false},"isCompiled":true}'
+  typescriptHash: a11200010426f0b5ca9d74d26c558f4c
+  onlyWriteTrigger: 0

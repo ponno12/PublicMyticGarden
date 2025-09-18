@@ -1,0 +1,151 @@
+fileFormatVersion: 2
+guid: b5cb5e50afb68504b876bcacf4f62575
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: "{\"source\":\"\\\"use strict\\\";\\r\\nObject.defineProperty(exports,
+    \\\"__esModule\\\", { value: true });\\r\\nexports.Utils = void 0;\\r\\nconst
+    UnityEngine = require(\\\"UnityEngine\\\");\\r\\nconst Define_1 = require(\\\"./Define\\\");\\r\\nvar
+    Utils;\\r\\n(function (Utils) {\\r\\n    // \uCEEC\uB7EC \uD0C0\uC785 \uC815\uC758
+    \\r\\n    class ColorType {\\r\\n    }\\r\\n    ColorType.normal = new UnityEngine.Color(1,
+    1, 0.9803922, 1);\\r\\n    ColorType.rare = new UnityEngine.Color(0.4588235,
+    0.6745098, 0.4196078, 1);\\r\\n    ColorType.magic = new UnityEngine.Color(0.3529412,
+    0.372549, 0.8745098, 1);\\r\\n    ColorType.unique = new UnityEngine.Color(0.7960784,
+    0.4784314, 0.8039216, 1);\\r\\n    ColorType.legend = new UnityEngine.Color(0.9058824,
+    0.3490196, 0.3215686, 1);\\r\\n    ColorType.mythic = new UnityEngine.Color(1,
+    0.9647059, 0.4117647, 1);\\r\\n    ColorType.gold = new UnityEngine.Color(1,
+    0.8431373, 0, 1);\\r\\n    ColorType.silver = new UnityEngine.Color(0.7529412,
+    0.7529412, 0.7529412, 1);\\r\\n    ColorType.bronze = new UnityEngine.Color(0.84,
+    0.498, 0.196, 1);\\r\\n    ColorType.zpurple = new UnityEngine.Color(0.3607843,
+    0.2784314, 0.9921569, 1);\\r\\n    ColorType.alphaZero = new UnityEngine.Color(1,
+    1, 1, 0);\\r\\n    ColorType.ui_default = new UnityEngine.Color(1, 0.9921569,
+    0.909804, 1);\\r\\n    ColorType.ui_select = new UnityEngine.Color(0.764706,
+    0.3960785, 0.3960785, 1);\\r\\n    ColorType.ui_unselect = new UnityEngine.Color(1,
+    0.8, 0.8, 1);\\r\\n    ColorType.ui_text_active = new UnityEngine.Color(0.6392157,
+    0.282353, 0.2745098, 1);\\r\\n    ColorType.ui_text_inactive = new UnityEngine.Color(0.9176471,
+    0.6117647, 0.6117647, 1);\\r\\n    Utils.ColorType = ColorType;\\r\\n    class
+    Direction {\\r\\n    }\\r\\n    Direction.left = new UnityEngine.Vector3(-0.6,
+    0, 1);\\r\\n    Direction.right = new UnityEngine.Vector3(0.6, 0, 1);\\r\\n   
+    Direction.leftRotation = new UnityEngine.Vector3(0, -45.0);\\r\\n    Direction.RighttRotation
+    = new UnityEngine.Vector3(0, 45.0);\\r\\n    Utils.Direction = Direction;\\r\\n   
+    function ParseVector3(vector3) {\\r\\n        return new UnityEngine.Vector3(vector3.x,
+    vector3.y, vector3.z);\\r\\n    }\\r\\n    Utils.ParseVector3 = ParseVector3;\\r\\n   
+    // \uADF8\uAC70...\\r\\n    function FormatString(origin, ...arg) {\\r\\n       
+    if (origin == null || arg == null)\\r\\n            return \\\"\\\";\\r\\n       
+    for (let index = 0; index < arg.length; index++) {\\r\\n            origin =
+    origin.replace(`{${index}}`, arg[index]);\\r\\n        }\\r\\n        return
+    origin;\\r\\n    }\\r\\n    Utils.FormatString = FormatString;\\r\\n    // \uC22B\uC790
+    \uD45C\uD604\uBC29\uC2DD. \\r\\n    function FormatNumber(value) {\\r\\n       
+    let str = \\\"\\\";\\r\\n        if (value < 1000) {\\r\\n            // \uAC4D\\r\\n           
+    str = Math.floor(value).toString();\\r\\n        }\\r\\n        else if (value
+    < 1000000) {\\r\\n            // \uC77C\uCC9C. K\\r\\n            str = (Math.floor((value
+    / 1000) * 10) / 10).toString() + \\\"K\\\";\\r\\n        }\\r\\n        else
+    if (value < 1000000000) {\\r\\n            // \uBC31\uB9CC. M\\r\\n           
+    str = (Math.floor((value / 1000000) * 10) / 10).toString() + \\\"M\\\";\\r\\n       
+    }\\r\\n        else if (value <= 1000000000000) {\\r\\n            // \uC2ED\uC5B5.
+    B\\r\\n            str = (Math.floor((value / 1000000000) * 10) / 10).toString()
+    + \\\"B\\\";\\r\\n        }\\r\\n        else {\\r\\n            // \uC77C\uC870.
+    T\\r\\n            str = (Math.floor((value / 1000000000000) * 10) / 10).toString()
+    + \\\"T\\\";\\r\\n        }\\r\\n        return str;\\r\\n    }\\r\\n    Utils.FormatNumber
+    = FormatNumber;\\r\\n    // \uC11C\uBE0C \uADF8\uB808\uC774\uB4DC \uBCC4 \uCEEC\uB7EC.
+    \\r\\n    function SubGradeColor(subGrade) {\\r\\n        switch (subGrade) {\\r\\n           
+    case 1: return ColorType.normal;\\r\\n            case 2: return ColorType.rare;\\r\\n           
+    case 3: return ColorType.magic;\\r\\n            case 4: return ColorType.unique;\\r\\n           
+    case 5: return ColorType.legend;\\r\\n            case 6: return ColorType.mythic;\\r\\n           
+    default:\\r\\n            case 6: return ColorType.normal;\\r\\n        }\\r\\n   
+    }\\r\\n    Utils.SubGradeColor = SubGradeColor;\\r\\n    // 3\uC790\uB9AC\uB9C8\uB2E4
+    \uCF64\uB9C8 \uCC0D\uC5B4\uC8FC\uB294\uAC70, \\r\\n    function NumberWithCommas(value)
+    {\\r\\n        return value.toString().replace(/\\\\B(?=(\\\\d{3})+(?!\\\\d))/g,
+    \\\",\\\");\\r\\n    }\\r\\n    Utils.NumberWithCommas = NumberWithCommas;\\r\\n   
+    // export function LocalizationText(key: number): string {\\r\\n    //     let
+    table = ResourcesMng.Instance.GetTextTable;\\r\\n    //     if (table == null)
+    {\\r\\n    //         return \\\"ERROR\\\";\\r\\n    //     }\\r\\n    //    
+    let data = table.get(key);\\r\\n    //     if (data == null) {\\r\\n    //        
+    return `E ${key}`;\\r\\n    //     }\\r\\n    //     let type = 10;\\r\\n   
+    //     if (PlayerMng.Instance.SettingData != null) {\\r\\n    //         type
+    = PlayerMng.Instance.SettingData.language;\\r\\n    //     }\\r\\n    //    
+    switch (type) {\\r\\n    //         case 10:\\r\\n    //             return data.str_text_en;\\r\\n   
+    //         case 22:\\r\\n    //             return data.str_text_ja;\\r\\n   
+    //         case 23:\\r\\n    //             return data.str_text_kr;\\r\\n   
+    //         default:\\r\\n    //             return data.str_text_kr;\\r\\n   
+    //     }\\r\\n    // }\\r\\n    // \uC601\uC5B4, \uC77C\uC5B4, \uD55C\uAD6D\uC5B4
+    3\uAC1C \uACE0\uC815. \\r\\n    function CheckLanguage(type) {\\r\\n        if
+    (type == 999) {\\r\\n            type = UnityEngine.Application.systemLanguage;\\r\\n       
+    }\\r\\n        switch (type) {\\r\\n            case 10:\\r\\n            case
+    22:\\r\\n            case 23:\\r\\n                break;\\r\\n            default:\\r\\n               
+    return 23;\\r\\n        }\\r\\n        return type;\\r\\n    }\\r\\n    Utils.CheckLanguage
+    = CheckLanguage;\\r\\n    function ConvertDay(sec, isBlink = true) {\\r\\n       
+    let result = \\\"\\\";\\r\\n        if (sec >= 86400) {\\r\\n            result
+    = `${Math.floor(sec / 86400)}D`;\\r\\n        }\\r\\n        else {\\r\\n           
+    let hour = Math.floor(sec / 3600);\\r\\n            let minute = Math.floor((sec
+    % 3600) / 60);\\r\\n            let isEven = Math.floor(sec % 2);\\r\\n           
+    if (hour >= 10)\\r\\n                result = hour.toString();\\r\\n           
+    else\\r\\n                result = \\\"0\\\" + hour.toString();\\r\\n           
+    // \uAE5C\uBE61\uC784 \uC81C\uC5B4. \\r\\n            if (isBlink == false)\\r\\n               
+    isEven = 0;\\r\\n            if (minute >= 10) {\\r\\n                if (isEven
+    == 0)\\r\\n                    result = result + \\\":\\\" + minute.toString();\\r\\n               
+    else\\r\\n                    result = result + \\\" \\\" + minute.toString();\\r\\n           
+    }\\r\\n            else {\\r\\n                if (isEven == 0)\\r\\n                   
+    result = result + \\\":0\\\" + minute.toString();\\r\\n                else\\r\\n                   
+    result = result + \\\" 0\\\" + minute.toString();\\r\\n            }\\r\\n       
+    }\\r\\n        return result;\\r\\n    }\\r\\n    Utils.ConvertDay = ConvertDay;\\r\\n   
+    function Log(type, msg, paramType, paramValue) {\\r\\n        let param = \\\"\\\";\\r\\n       
+    if (paramType != null && paramValue != null) {\\r\\n            param = `(${paramType}
+    : ${paramValue})`;\\r\\n        }\\r\\n        switch (type) {\\r\\n           
+    case Define_1.Define.LogType.Log:\\r\\n                console.log(msg + param);\\r\\n               
+    break;\\r\\n            case Define_1.Define.LogType.Info:\\r\\n               
+    console.info(msg + param);\\r\\n                break;\\r\\n            case
+    Define_1.Define.LogType.Error:\\r\\n                console.error(msg + param);\\r\\n               
+    break;\\r\\n            case Define_1.Define.LogType.Warn:\\r\\n               
+    console.warn(msg + param);\\r\\n                break;\\r\\n        }\\r\\n       
+    //AnalyticsMng.Instance.LogEvent(msg, )\\r\\n    }\\r\\n    Utils.Log = Log;\\r\\n   
+    // \uC0E4\uB4DC \uBCC4  StatusParamType -> Dropup_Shard \uAD6C\uD55C\uB2E4. \\r\\n   
+    // export function ConvertStatusParam(shardTID: number): Define.StatusParamType
+    {\\r\\n    //     switch (shardTID) {\\r\\n    //         case 1: return Define.StatusParamType.Dropup_Shard_1;\\r\\n   
+    //         case 2: return Define.StatusParamType.Dropup_Shard_2;\\r\\n    //        
+    case 3: return Define.StatusParamType.Dropup_Shard_3;\\r\\n    //         case
+    4: return Define.StatusParamType.Dropup_Shard_4;\\r\\n    //         case 5:
+    return Define.StatusParamType.Dropup_Shard_5;\\r\\n    //         case 6: return
+    Define.StatusParamType.Dropup_Shard_6;\\r\\n    //         case 7: return Define.StatusParamType.Dropup_Shard_7;\\r\\n   
+    //         case 8: return Define.StatusParamType.Dropup_Shard_8;\\r\\n    //        
+    case 9: return Define.StatusParamType.Dropup_Shard_9;\\r\\n    //         case
+    10: return Define.StatusParamType.Dropup_Shard_10;\\r\\n    //         case 11:
+    return Define.StatusParamType.Dropup_Shard_11;\\r\\n    //     }\\r\\n    //    
+    return Define.StatusParamType.None;\\r\\n    // }\\r\\n    // \uB0B4 \uC815\uBCF4\uC640
+    \uBE44\uAD50\uD574 \uC9C0\uBD88 \uB2A5\uB825\uC774 \uC788\uB294\uC9C0 \uD310\uB2E8.
+    \\r\\n    // export function CheckPrice(type: Define.ItemSubType, price: number):
+    boolean {\\r\\n    //     let userData = PlayerMng.Instance.UserData;\\r\\n   
+    //     if (userData == null) {\\r\\n    //         console.error(\\\"[CheckPrice]
+    userData == null \\\");\\r\\n    //         return false;\\r\\n    //     }\\r\\n   
+    //     switch (type) {\\r\\n    //         case Define.ItemSubType.InGame_Dia:
+    {\\r\\n    //             if (userData.diamond >= price)\\r\\n    //                
+    return true;\\r\\n    //             break;\\r\\n    //         }\\r\\n    //        
+    case Define.ItemSubType.InGame_Coin: {\\r\\n    //             if (userData.gold
+    >= price)\\r\\n    //                 return true;\\r\\n    //             break;\\r\\n   
+    //         }\\r\\n    //     }\\r\\n    //     return false;\\r\\n    // }\\r\\n   
+    // \uC544\uC774\uD15C \uC11C\uBE0C \uD0C0\uC785\uC5D0 \uB530\uB978 \uC544\uC774\uCF58
+    \uC774\uB984.\\r\\n    // export function GetItemSubTypeIconName(type: Define.ItemSubType):
+    string {\\r\\n    //     switch (type) {\\r\\n    //         case Define.ItemSubType.InGame_Dia:
+    {\\r\\n    //             return \\\"icon_dia\\\";\\r\\n    //         }\\r\\n   
+    //         case Define.ItemSubType.InGame_Coin: {\\r\\n    //             return
+    \\\"icon_coin\\\";\\r\\n    //         }\\r\\n    //         case Define.ItemSubType.Status_Item:
+    {\\r\\n    //             return \\\"icon_mastery_sot\\\"\\r\\n    //        
+    }\\r\\n    //     }\\r\\n    //     return null;\\r\\n    // }\\r\\n})(Utils
+    = exports.Utils || (exports.Utils = {}));\\r\\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiVXRpbHMuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJVdGlscy50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7QUFDQSwyQ0FBMkM7QUFFM0MscUNBQWtDO0FBRWxDLElBQWlCLEtBQUssQ0F3UnJCO0FBeFJELFdBQWlCLEtBQUs7SUFFbEIsWUFBWTtJQUNaLE1BQWEsU0FBUzs7SUFDSixnQkFBTSxHQUFzQixJQUFJLFdBQVcsQ0FBQyxLQUFLLENBQUMsQ0FBQyxFQUFFLENBQUMsRUFBRSxTQUFTLEVBQUUsQ0FBQyxDQUFDLENBQUM7SUFDdEUsY0FBSSxHQUFzQixJQUFJLFdBQVcsQ0FBQyxLQUFLLENBQUMsU0FBUyxFQUFFLFNBQVMsRUFBRSxTQUFTLEVBQUUsQ0FBQyxDQUFDLENBQUM7SUFDcEYsZUFBSyxHQUFzQixJQUFJLFdBQVcsQ0FBQyxLQUFLLENBQUMsU0FBUyxFQUFFLFFBQVEsRUFBRSxTQUFTLEVBQUUsQ0FBQyxDQUFDLENBQUM7SUFDcEYsZ0JBQU0sR0FBc0IsSUFBSSxXQUFXLENBQUMsS0FBSyxDQUFDLFNBQVMsRUFBRSxTQUFTLEVBQUUsU0FBUyxFQUFFLENBQUMsQ0FBQyxDQUFDO0lBQ3RGLGdCQUFNLEdBQXNCLElBQUksV0FBVyxDQUFDLEtBQUssQ0FBQyxTQUFTLEVBQUUsU0FBUyxFQUFFLFNBQVMsRUFBRSxDQUFDLENBQUMsQ0FBQztJQUN0RixnQkFBTSxHQUFzQixJQUFJLFdBQVcsQ0FBQyxLQUFLLENBQUMsQ0FBQyxFQUFFLFNBQVMsRUFBRSxTQUFTLEVBQUUsQ0FBQyxDQUFDLENBQUM7SUFFOUUsY0FBSSxHQUFzQixJQUFJLFdBQVcsQ0FBQyxLQUFLLENBQUMsQ0FBQyxFQUFFLFNBQVMsRUFBRSxDQUFDLEVBQUUsQ0FBQyxDQUFDLENBQUM7SUFDcEUsZ0JBQU0sR0FBc0IsSUFBSSxXQUFXLENBQUMsS0FBSyxDQUFDLFNBQVMsRUFBRSxTQUFTLEVBQUUsU0FBUyxFQUFFLENBQUMsQ0FBQyxDQUFDO0lBQ3RGLGdCQUFN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\",\"assetPath\":\"Assets/_Scripts/Utils.ts\",\"manifest\":{\"properties\":[],\"name\":\"Utils\",\"description\":\"\",\"hasAnimatorMove\":false},\"isCompiled\":true}"
+  typescriptHash: dfd0d5734225e7e8e58651bae50b3559
+  onlyWriteTrigger: 0

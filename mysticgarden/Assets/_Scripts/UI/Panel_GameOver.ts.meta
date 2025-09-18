@@ -1,0 +1,32 @@
+fileFormatVersion: 2
+guid: bd894c3c787f5b94999fef2349e53d2d
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: '{"source":"\"use strict\";\r\nObject.defineProperty(exports, \"__esModule\",
+    { value: true });\r\nconst ZEPETO_Script_1 = require(\"ZEPETO.Script\");\r\nconst
+    UIMng_1 = require(\"../Manager/UIMng\");\r\nconst GameManager_1 = require(\"../Manager/GameManager\");\r\nconst
+    Define_1 = require(\"../Define\");\r\nconst TowerGameMng_1 = require(\"../Manager/TowerGameMng\");\r\nclass
+    Panel_GameOver extends ZEPETO_Script_1.ZepetoScriptBehaviour {\r\n    Awake()
+    {\r\n        UIMng_1.default.Instance.AddPanel(\"Panel_GameOver\", this);\r\n       
+    this.SetActive(false);\r\n    }\r\n    Start() {\r\n        this.btn_Home.onClick.AddListener(()
+    => {\r\n            TowerGameMng_1.default.Instance.ChangeState(Define_1.Define.T_GameState.GameEnd);\r\n       
+    });\r\n    }\r\n    SetActive(bool) {\r\n        this.gameObject.SetActive(bool);\r\n   
+    }\r\n}\r\nexports.default = Panel_GameOver;\r\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiUGFuZWxfR2FtZU92ZXIuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJQYW5lbF9HYW1lT3Zlci50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOztBQUFBLGlEQUFxRDtBQUVyRCw0Q0FBcUM7QUFDckMsd0RBQWlEO0FBQ2pELHNDQUFtQztBQUNuQywwREFBbUQ7QUFFbkQsTUFBcUIsY0FBZSxTQUFRLHFDQUFxQjtJQUs3RCxLQUFLO1FBQ0QsZUFBSyxDQUFDLFFBQVEsQ0FBQyxRQUFRLENBQWlCLGdCQUFnQixFQUFFLElBQUksQ0FBQyxDQUFDO1FBRWhFLElBQUksQ0FBQyxTQUFTLENBQUMsS0FBSyxDQUFDLENBQUM7SUFDMUIsQ0FBQztJQUNELEtBQUs7UUFDRCxJQUFJLENBQUMsUUFBUSxDQUFDLE9BQU8sQ0FBQyxXQUFXLENBQUMsR0FBRyxFQUFFO1lBQ25DLHNCQUFZLENBQUMsUUFBUSxDQUFDLFdBQVcsQ0FBQyxlQUFNLENBQUMsV0FBVyxDQUFDLE9BQU8sQ0FBQyxDQUFDO1FBRWxFLENBQUMsQ0FBQyxDQUFBO0lBQ04sQ0FBQztJQUVELFNBQVMsQ0FBQyxJQUFVO1FBQ2hCLElBQUksQ0FBQyxVQUFVLENBQUMsU0FBUyxDQUFDLElBQUksQ0FBQyxDQUFDO0lBQ3BDLENBQUM7Q0FFSjtBQXJCRCxpQ0FxQkMifQ==","assetPath":"Assets/_Scripts/UI/Panel_GameOver.ts","manifest":{"properties":[{"assembly":"UnityEngine.UI","name":"btn_Home","type":"UnityEngine.UI.Button","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]}],"name":"Panel_GameOver","description":"","hasAnimatorMove":false},"isCompiled":true}'
+  typescriptHash: 69221b11152fa4d4ce8c6b4d43b2d107
+  onlyWriteTrigger: 0

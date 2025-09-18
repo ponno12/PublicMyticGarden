@@ -1,0 +1,106 @@
+fileFormatVersion: 2
+guid: ffa08fb7e6228a54fb727d54f280579d
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: "{\"source\":\"\\\"use strict\\\";\\r\\nObject.defineProperty(exports,
+    \\\"__esModule\\\", { value: true });\\r\\nconst ZEPETO_Script_1 = require(\\\"ZEPETO.Script\\\");\\r\\nconst
+    Define_1 = require(\\\"../Define\\\");\\r\\nconst UnityEngine_1 = require(\\\"UnityEngine\\\");\\r\\nconst
+    ZepetoPlayersManager_1 = require(\\\"../../Zepeto Multiplay Component/ZepetoScript/Player/ZepetoPlayersManager\\\");\\r\\nconst
+    Utils_1 = require(\\\"../Utils\\\");\\r\\nconst GameManager_1 = require(\\\"./GameManager\\\");\\r\\nconst
+    ScaffoldingMng_1 = require(\\\"./ScaffoldingMng\\\");\\r\\nconst UIMng_1 = require(\\\"./UIMng\\\");\\r\\nconst
+    Panel_GameOver_1 = require(\\\"../UI/Panel_GameOver\\\");\\r\\nconst Panel_InGame_1
+    = require(\\\"../UI/Panel_InGame\\\");\\r\\nclass TowerGameMng extends ZEPETO_Script_1.ZepetoScriptBehaviour
+    {\\r\\n    constructor() {\\r\\n        super(...arguments);\\r\\n        this.direction
+    = Define_1.Define.Direction.left;\\r\\n        // \uAC10\uC18C \uAC00\uC911\uCE58\\r\\n       
+    this.hpGravity = 30;\\r\\n        // HP\uBC14 \uAC31\uC2E0 \uC8FC\uAE30\\r\\n       
+    this.hpChangeInterval = 0;\\r\\n        // \uAC8C\uC784 HP\\r\\n        this.playerHp
+    = 0;\\r\\n        // \uC9C4\uD589\uD55C \uD0C0\uC77C\uC218\\r\\n        this.tilecount
+    = 0;\\r\\n        this.characterWidth = 0;\\r\\n        this.gameState = Define_1.Define.T_GameState.None;\\r\\n   
+    }\\r\\n    static get Instance() {\\r\\n        if (ZEPETO_Script_1.ZepetoScriptBehaviour.op_Equality(this.instance,
+    null)) {\\r\\n            var _obj = new UnityEngine_1.GameObject(\\\"TowerGameMng\\\");\\r\\n           
+    UnityEngine_1.GameObject.DontDestroyOnLoad(_obj);\\r\\n            this.instance
+    = _obj.AddComponent($typeof(TowerGameMng));\\r\\n        }\\r\\n        return
+    this.instance;\\r\\n    }\\r\\n    get GameTime() {\\r\\n        return this.gameTime;\\r\\n   
+    }\\r\\n    get TileCount() {\\r\\n        return this.tilecount;\\r\\n    }\\r\\n   
+    set TileCount(count) {\\r\\n        this.tilecount = count;\\r\\n    }\\r\\n   
+    Awake() {\\r\\n        TowerGameMng.instance = this;\\r\\n    }\\r\\n    Init()
+    {\\r\\n        this.panel_ingame = UIMng_1.default.Instance.GetPanel(\\\"Panel_InGame\\\");\\r\\n       
+    this.panel_gameover = UIMng_1.default.Instance.GetPanel(\\\"Panel_GameOver\\\");\\r\\n       
+    this.playerHp = 50;\\r\\n        this.tilecount = 0;\\r\\n        this.direction
+    = Define_1.Define.Direction.left;\\r\\n        this.myCharacter = ZepetoPlayersManager_1.default.instance.myCharacter;\\r\\n       
+    this.characterWidth = ScaffoldingMng_1.default.Instance.startWidth;\\r\\n       
+    this.ChangeState(Define_1.Define.T_GameState.None);\\r\\n        ScaffoldingMng_1.default.Instance.FirstCreateTile();\\r\\n   
+    }\\r\\n    GameMoving(dir) {\\r\\n        if (this.gameState != Define_1.Define.T_GameState.Play)
+    {\\r\\n            this.ChangeState(Define_1.Define.T_GameState.Play);\\r\\n       
+    }\\r\\n        if (dir == Define_1.Define.Direction.left) {\\r\\n           
+    this.myCharacter.transform.position = UnityEngine_1.Vector3.op_Addition(this.myCharacter.transform.position,
+    Utils_1.Utils.Direction.left);\\r\\n            this.myCharacter.Context.transform.rotation
+    = UnityEngine_1.Quaternion.Euler(Utils_1.Utils.Direction.leftRotation);\\r\\n           
+    this.characterWidth--;\\r\\n        }\\r\\n        else {\\r\\n            this.myCharacter.transform.position
+    = UnityEngine_1.Vector3.op_Addition(this.myCharacter.transform.position, Utils_1.Utils.Direction.right);\\r\\n           
+    this.myCharacter.Context.transform.rotation = UnityEngine_1.Quaternion.Euler(Utils_1.Utils.Direction.RighttRotation);\\r\\n           
+    this.characterWidth++;\\r\\n        }\\r\\n        this.tilecount++;\\r\\n       
+    this.HPChange(12.5);\\r\\n        this.CheckTile();\\r\\n        ScaffoldingMng_1.default.Instance.CheckCreateTile();\\r\\n   
+    }\\r\\n    CheckTile() {\\r\\n        let Tile = ScaffoldingMng_1.default.Instance.TileCtrList;\\r\\n       
+    this.panel_ingame.txt_Score.text = this.tilecount.toString();\\r\\n        if
+    (Tile[0].width != this.characterWidth) {\\r\\n            console.log(`\uC798\uBABB
+    \uBC1F\uC544\uC11C \uC0AC\uB9DD`);\\r\\n            this.ChangeState(Define_1.Define.T_GameState.GameOver);\\r\\n       
+    }\\r\\n    }\\r\\n    ChangeState(state) {\\r\\n        //let panel_ingame =
+    UIMng.Instance.GetPanel<Panel_InGame>(\\\"Panel_InGame\\\");\\r\\n        //let
+    panel_gameover = UIMng.Instance.GetPanel<Panel_GameOver>(\\\"Panel_GameOver\\\");\\r\\n       
+    this.gameState = state;\\r\\n        switch (state) {\\r\\n            case Define_1.Define.T_GameState.None:\\r\\n               
+    this.tilecount = 0;\\r\\n                this.myCharacter.Context.transform.localRotation
+    = UnityEngine_1.Quaternion.Euler(Utils_1.Utils.Direction.leftRotation);\\r\\n               
+    ScaffoldingMng_1.default.Instance.Init();\\r\\n                this.panel_ingame.txt_Score.text
+    = this.tilecount.toString();\\r\\n                this.panel_ingame.SetActive(true);\\r\\n               
+    break;\\r\\n            case Define_1.Define.T_GameState.Play:\\r\\n               
+    break;\\r\\n            case Define_1.Define.T_GameState.Pause:\\r\\n               
+    break;\\r\\n            case Define_1.Define.T_GameState.GameOver:\\r\\n               
+    this.panel_ingame.SetActive(false);\\r\\n                this.panel_gameover.SetActive(true);\\r\\n               
+    break;\\r\\n            case Define_1.Define.T_GameState.GameEnd:\\r\\n               
+    this.myCharacter.Context.transform.rotation = UnityEngine_1.Quaternion.Euler(UnityEngine_1.Vector3.zero);\\r\\n               
+    this.panel_gameover.SetActive(false);\\r\\n                GameManager_1.default.Instance.ChangeGameState(Define_1.Define.GameState.Towergame_End);\\r\\n               
+    break;\\r\\n            default:\\r\\n                break;\\r\\n        }\\r\\n   
+    }\\r\\n    UpdateState() {\\r\\n        console.log(`T_gamestate : ${this.gameState}`);\\r\\n       
+    switch (this.gameState) {\\r\\n            case Define_1.Define.T_GameState.None:\\r\\n               
+    break;\\r\\n            case Define_1.Define.T_GameState.Play:\\r\\n               
+    // \uC5EC\uAE30\uC11C \uAC8C\uC774\uC9C0 \uB2F3\uAC8C \uD558\uB294\uAC12 \uC124\uC815\uD574\uC57C\uD568.\\r\\n               
+    // \uD50C\uB808\uC774 \uC2DC\uAC04 \uB204\uC801\\r\\n                this.gameTime
+    += UnityEngine_1.Time.deltaTime;\\r\\n                this.HPChange(-UnityEngine_1.Time.deltaTime
+    * this.hpGravity);\\r\\n                // \uC5EC\uAE30\uC5D0 \uAC00\uC911\uCE58
+    \uCD94\uAC00\uD574\uC918\uC57C\uD568\\r\\n                this.hpChangeInterval
+    += UnityEngine_1.Time.deltaTime;\\r\\n                if (this.hpChangeInterval
+    > 0.1) {\\r\\n                    //this.HPChange\\r\\n                    this.hpChangeInterval
+    = 0;\\r\\n                    if (this.playerHp <= 0.5) {\\r\\n                       
+    console.log(`HP \uBD80\uC871\uC744 \uC0AC\uB9DD`);\\r\\n                       
+    this.ChangeState(Define_1.Define.T_GameState.GameOver);\\r\\n                   
+    }\\r\\n                }\\r\\n                break;\\r\\n            case Define_1.Define.T_GameState.Pause:\\r\\n               
+    break;\\r\\n            case Define_1.Define.T_GameState.GameOver:\\r\\n               
+    break;\\r\\n            case Define_1.Define.T_GameState.GameEnd:\\r\\n               
+    break;\\r\\n            default:\\r\\n                break;\\r\\n        }\\r\\n   
+    }\\r\\n    // \uC99D\uAC10\uAC12\\r\\n    HPChange(value) {\\r\\n        this.panel_ingame.HPChange(this.playerHp);\\r\\n       
+    this.playerHp += value;\\r\\n        if (this.playerHp >= 100) {\\r\\n           
+    this.playerHp = 100;\\r\\n        }\\r\\n        else if (this.playerHp <= 0.5)
+    {\\r\\n            this.playerHp = 0;\\r\\n        }\\r\\n    }\\r\\n    OnGUI()
+    {\\r\\n        if (UnityEngine_1.GUI.Button(new UnityEngine_1.Rect(100, 100,
+    150, 100), \\\"\uCCB4\uB825\uAC10\uC18C\uC5C6\uC74C\\\")) {\\r\\n           
+    this.hpGravity = 0;\\r\\n        }\\r\\n    }\\r\\n}\\r\\nexports.default = TowerGameMng;\\r\\n//#
+    sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiVG93ZXJHYW1lTW5nLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiVG93ZXJHYW1lTW5nLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7O0FBQUEsaURBQXFEO0FBQ3JELHNDQUFtQztBQUNuQyw2Q0FBK0Y7QUFFL0Ysb0hBQTZHO0FBQzdHLG9DQUFpQztBQUNqQywrQ0FBd0M7QUFDeEMscURBQThDO0FBQzlDLG1DQUE0QjtBQUM1Qix5REFBa0Q7QUFDbEQscURBQThDO0FBSTlDLE1BQXFCLFlBQWEsU0FBUSxxQ0FBcUI7SUFBL0Q7O1FBYVcsY0FBUyxHQUFxQixlQUFNLENBQUMsU0FBUyxDQUFDLElBQUksQ0FBQztRQVkzRCxTQUFTO1FBQ0YsY0FBUyxHQUFXLEVBQUUsQ0FBQztRQUM5QixZQUFZO1FBQ0wscUJBQWdCLEdBQVcsQ0FBQyxDQUFDO1FBQ3BDLFFBQVE7UUFDRCxhQUFRLEdBQVcsQ0FBQyxDQUFDO1FBRTVCLFVBQVU7UUFDSCxjQUFTLEdBQVcsQ0FBQyxDQUFDO1FBUXRCLG1CQUFjLEdBQVcsQ0FBQyxDQUFDO1FBQzNCLGNBQVMsR0FBdUIsZUFBTSxDQUFDLFdBQVcsQ0FBQyxJQUFJLENBQUM7SUFpSm5FLENBQUM7SUF4TFUsTUFBTSxLQUFLLFFBQVE7UUFDdEIsSUFsQkMscUNBQXFCLENBeU1xVyxXQUFZLENBdkxuWSxJQUFJLENBQUMsUUFBUSxFQUFJLElBQUksR0FBRTtZQUN2QixJQUFJLElBQUksR0FBRyxJQUFJLHdCQUFVLENBQUMsY0FBYyxDQUFDLENBQUM7WUFDMUMsd0JBQVUsQ0FBQyxpQkFBaUIsQ0FBQyxJQUFJLENBQUMsQ0FBQztZQUNuQyxJQUFJLENBQUMsUUFBUSxHQUFHLElBQUksQ0FBQyxZQUFZLFNBQUMsWUFBWSxFQUFHLENBQUM7U0FDckQ7UUFFRCxPQUFPLElBQUksQ0FBQyxRQUFRLENBQUM7SUFDekIsQ0FBQztJQU9ELElBQVcsUUFBUTtRQUNmLE9BQU8sSUFBSSxDQUFDLFFBQVEsQ0FBQztJQUN6QixDQUFD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\",\"assetPath\":\"Assets/_Scripts/Manager/TowerGameMng.ts\",\"manifest\":{\"properties\":[{\"assembly\":\"\",\"name\":\"direction\",\"type\":\"C:/Project/Q1/Assets/_Scripts/Define.efin.Direction\",\"isArray\":false,\"initValue\":[\"left\"],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]},{\"assembly\":\"mscorlib\",\"name\":\"hpGravity\",\"type\":\"System.Single\",\"isArray\":false,\"initValue\":[\"30\"],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]},{\"assembly\":\"mscorlib\",\"name\":\"hpChangeInterval\",\"type\":\"System.Single\",\"isArray\":false,\"initValue\":[\"0\"],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]},{\"assembly\":\"mscorlib\",\"name\":\"playerHp\",\"type\":\"System.Single\",\"isArray\":false,\"initValue\":[\"0\"],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]},{\"assembly\":\"mscorlib\",\"name\":\"tilecount\",\"type\":\"System.Single\",\"isArray\":false,\"initValue\":[\"0\"],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]},{\"assembly\":\"mscorlib\",\"name\":\"characterWidth\",\"type\":\"System.Single\",\"isArray\":false,\"initValue\":[\"0\"],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]},{\"assembly\":\"\",\"name\":\"gameState\",\"type\":\"C:/Project/Q1/Assets/_Scripts/Define.efin.T_GameState\",\"isArray\":false,\"initValue\":[\"None\"],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]}],\"name\":\"TowerGameMng\",\"description\":\"\",\"hasAnimatorMove\":false},\"isCompiled\":true}"
+  typescriptHash: 0e5351db75efe3cfaaeede678d772066
+  onlyWriteTrigger: 0

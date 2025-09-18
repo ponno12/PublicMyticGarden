@@ -1,0 +1,172 @@
+fileFormatVersion: 2
+guid: 1d4b90f780502fe4ebd3a8fe81707c17
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: "{\"source\":\"\\\"use strict\\\";\\r\\nObject.defineProperty(exports,
+    \\\"__esModule\\\", { value: true });\\r\\nconst UnityEngine_1 = require(\\\"UnityEngine\\\");\\r\\nconst
+    ZEPETO_Script_1 = require(\\\"ZEPETO.Script\\\");\\r\\nconst ZEPETO_Character_Controller_1
+    = require(\\\"ZEPETO.Character.Controller\\\");\\r\\nconst Define_1 = require(\\\"../Define\\\");\\r\\nconst
+    UnityEngine_SceneManagement_1 = require(\\\"UnityEngine.SceneManagement\\\");\\r\\nconst
+    ResourcesMng_1 = require(\\\"./ResourcesMng\\\");\\r\\nconst UIMng_1 = require(\\\"./UIMng\\\");\\r\\nconst
+    LeaderboardMng_1 = require(\\\"./LeaderboardMng\\\");\\r\\nconst ZepetoPlayersManager_1
+    = require(\\\"../../Zepeto Multiplay Component/ZepetoScript/Player/ZepetoPlayersManager\\\");\\r\\nconst
+    Panel_InGame_1 = require(\\\"../UI/Panel_InGame\\\");\\r\\nconst TowerGameMng_1
+    = require(\\\"./TowerGameMng\\\");\\r\\nclass GameManager extends ZEPETO_Script_1.ZepetoScriptBehaviour
+    {\\r\\n    constructor() {\\r\\n        super(...arguments);\\r\\n        this.gameState
+    = Define_1.Define.GameState.None;\\r\\n        this.gameSubState = Define_1.Define.GameSubState.None;\\r\\n   
+    }\\r\\n    static get Instance() {\\r\\n        if (ZEPETO_Script_1.ZepetoScriptBehaviour.op_Equality(this.instance,
+    null)) {\\r\\n            var _obj = new UnityEngine_1.GameObject(\\\"GameMng\\\");\\r\\n           
+    UnityEngine_1.GameObject.DontDestroyOnLoad(_obj);\\r\\n            this.instance
+    = _obj.AddComponent($typeof(GameManager));\\r\\n        }\\r\\n        return
+    this.instance;\\r\\n    }\\r\\n    get GetGameState() { return this.gameState;
+    }\\r\\n    Awake() {\\r\\n        GameManager.instance = this;\\r\\n        this.gameState
+    = Define_1.Define.GameState.Init_Start;\\r\\n        this.gameSubState = Define_1.Define.GameSubState.None;\\r\\n   
+    }\\r\\n    // Start() {\\r\\n    //     ZepetoPlayers.instance.OnAddedLocalPlayer.AddListener(()
+    => {\\r\\n    //         ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character.transform.tag
+    = \\\"Player\\\";\\r\\n    //     })\\r\\n    // }\\r\\n    Update() {\\r\\n       
+    this.UpdateState();\\r\\n    }\\r\\n    UpdateState() {\\r\\n        //console.log(`gaeState
+    : ${this.gameState}`);\\r\\n        switch (this.gameState) {\\r\\n           
+    case Define_1.Define.GameState.None:\\r\\n                break;\\r\\n           
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////\\r\\n           
+    // \uC2DC\uC791. \\r\\n            case Define_1.Define.GameState.Init_Start:\\r\\n               
+    this.ChangeGameState(Define_1.Define.GameState.Init_Update);\\r\\n               
+    // \uCE90\uB9AD\uD130 \uC0DD\uC131 \uB300\uAE30. \\r\\n                this.ChangeSubGameState(Define_1.Define.GameSubState.WaitCreatePlayer_Start);\\r\\n               
+    break;\\r\\n            case Define_1.Define.GameState.Init_Update:\\r\\n               
+    // \uD558\uC704 \uC2A4\uD14C\uC774\uD2B8 \uCC98\uB9AC. \\r\\n               
+    this.UpdateSubState();\\r\\n                // \uCE90\uB9AD\uD130 \uC0DD\uC131
+    \uCCB4\uD06C. \\r\\n                if (this.gameSubState == Define_1.Define.GameSubState.Complete)
+    {\\r\\n                    this.ChangeGameState(Define_1.Define.GameState.Init_End);\\r\\n                   
+    this.ChangeSubGameState(Define_1.Define.GameSubState.None);\\r\\n                   
+    // \uCEE8\uD2B8\uB864 UI \uBE44\uD65C\uC131\uD654 \uC2DC\uCF1C\uB454\uB2E4.                    
+    \\r\\n                    //ZepetoPlayers.instance.controllerData.horizontalController.gameObject.SetActive(false);\\r\\n               
+    }\\r\\n                break;\\r\\n            case Define_1.Define.GameState.Init_End:\\r\\n               
+    this.ChangeGameState(Define_1.Define.GameState.Move_SceneLoading_Start);\\r\\n               
+    break;\\r\\n            /////////////////////////////////////////////////////////////////////////////////////////////////////////////\\r\\n           
+    // \uB85C\uB529\uC52C\uC73C\uB85C \uC774\uB3D9 \uC2DC\uC791. \\r\\n           
+    case Define_1.Define.GameState.Move_SceneLoading_Start:\\r\\n               
+    this.tempCoroutine = this.StartCoroutine(this.LoadScene(Define_1.Define.SceneType.Loading));\\r\\n               
+    this.ChangeGameState(Define_1.Define.GameState.Move_SceneLoading_Update);\\r\\n               
+    break;\\r\\n            case Define_1.Define.GameState.Move_SceneLoading_Update:\\r\\n               
+    break;\\r\\n            case Define_1.Define.GameState.Move_SceneLoading_End:\\r\\n               
+    this.StopCoroutine(this.tempCoroutine);\\r\\n                this.ChangeGameState(Define_1.Define.GameState.SceneLoading_Start);\\r\\n               
+    break;\\r\\n            /////////////////////////////////////////////////////////////////////////////////////////////////////////////\\r\\n           
+    // \uB85C\uB529\uC52C \uC9C4\uC785 \uC644\uB8CC. \\r\\n            case Define_1.Define.GameState.SceneLoading_Start:\\r\\n               
+    this.ChangeGameState(Define_1.Define.GameState.SceneLoading_Update);\\r\\n               
+    //\uB098\uC911\uC5D0 \uBC1B\uC544\uC62C\uAC83\uB4E4\\r\\n                break;\\r\\n           
+    case Define_1.Define.GameState.SceneLoading_Update:\\r\\n                this.UpdateSubState();\\r\\n               
+    this.ChangeGameState(Define_1.Define.GameState.SceneLoading_End);\\r\\n               
+    // \uCE90\uB9AD\uD130 \uC815\uBCF4 \uC751\uB2F5 \uCCB4\uD06C. \\r\\n               
+    if (this.gameSubState == Define_1.Define.GameSubState.Complete) {\\r\\n                   
+    this.ChangeGameState(Define_1.Define.GameState.SceneLoading_End);\\r\\n                   
+    this.ChangeSubGameState(Define_1.Define.GameSubState.Complete);\\r\\n               
+    }\\r\\n                break;\\r\\n            case Define_1.Define.GameState.SceneLoading_End:\\r\\n               
+    this.ChangeGameState(Define_1.Define.GameState.Move_SceneWorld_Start);\\r\\n               
+    break;\\r\\n            /////////////////////////////////////////////////////////////////////////////////////////////////////////////\\r\\n           
+    // \uC6D4\uB4DC \uC774\uB3D9. \\r\\n            case Define_1.Define.GameState.Move_SceneWorld_Start:\\r\\n               
+    this.tempCoroutine = this.StartCoroutine(this.LoadScene(Define_1.Define.SceneType.World));\\r\\n               
+    this.ChangeGameState(Define_1.Define.GameState.Move_SceneWorld_Update);\\r\\n               
+    break;\\r\\n            case Define_1.Define.GameState.Move_SceneWorld_Update:\\r\\n               
+    break;\\r\\n            case Define_1.Define.GameState.Move_SceneWorld_End:\\r\\n               
+    this.ChangeGameState(Define_1.Define.GameState.Game_Start);\\r\\n               
+    break;\\r\\n            /////////////////////////////////////////////////////////////////////////////////////////////////////////////\\r\\n           
+    // \uC52C \uB85C\uB4DC \uC644\uB8CC \uD6C4 \uCC98\uB9AC ( \uB2E4\uB978 \uC720\uC800
+    \uC0DD\uC131 \uBC0F \uC815\uBCF4 \uC694\uCCAD.  )\\r\\n            // case Define.GameState.Init_Start:\\r\\n           
+    //     break;\\r\\n            // case Define.GameState.Init_Update:\\r\\n           
+    //     break;\\r\\n            // case Define.GameState.Init_End:\\r\\n           
+    //     break;\\r\\n            /////////////////////////////////////////////////////////////////////////////////////////////////////////////\\r\\n           
+    // \uAC8C\uC784 \uC2DC\uC791.\\r\\n            case Define_1.Define.GameState.Game_Start:\\r\\n               
+    // \uCEE8\uD2B8\uB864 UI \uD65C\uC131\uD654.\\r\\n                //ZepetoPlayers.instance.controllerData.horizontalController.gameObject.SetActive(true);\\r\\n               
+    ZEPETO_Character_Controller_1.ZepetoPlayers.instance.OnAddedLocalPlayer.AddListener(()
+    => {\\r\\n                    ZEPETO_Character_Controller_1.ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character.transform.tag
+    = \\\"Player\\\";\\r\\n                    ZepetoPlayersManager_1.default.instance.myCharacter
+    = ZEPETO_Character_Controller_1.ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character;\\r\\n                   
+    ZepetoPlayersManager_1.default.instance.myAnimator = ZEPETO_Character_Controller_1.ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character.gameObject.GetComponentInChildren($typeof(UnityEngine_1.Animator));\\r\\n                   
+    UIMng_1.default.Instance.UIZepetoPlayerControl = ZEPETO_Character_Controller_1.ZepetoPlayers.instance.gameObject.GetComponentInChildren($typeof(ZEPETO_Character_Controller_1.UIZepetoPlayerControl));\\r\\n                   
+    UIMng_1.default.Instance.zepetoScreenPad = ZEPETO_Character_Controller_1.ZepetoPlayers.instance.gameObject.GetComponentInChildren($typeof(ZEPETO_Character_Controller_1.ZepetoScreenTouchpad));\\r\\n               
+    });\\r\\n                UIMng_1.default.Instance.LoadingCanvas.SetActive(false);\\r\\n               
+    this.ChangeGameState(Define_1.Define.GameState.Game_Update);\\r\\n               
+    break;\\r\\n            case Define_1.Define.GameState.Game_Update:\\r\\n               
+    break;\\r\\n            case Define_1.Define.GameState.Game_End:\\r\\n               
+    break;\\r\\n            case Define_1.Define.GameState.Towergame_Start:\\r\\n               
+    TowerGameMng_1.default.Instance.Init();\\r\\n                this.TowerGameStart(true);\\r\\n               
+    this.camera.transform.parent = ZepetoPlayersManager_1.default.instance.myCharacter.transform;\\r\\n               
+    this.ChangeGameState(Define_1.Define.GameState.Towergame_Update);\\r\\n               
+    break;\\r\\n            case Define_1.Define.GameState.Towergame_Update:\\r\\n               
+    TowerGameMng_1.default.Instance.UpdateState();\\r\\n                break;\\r\\n           
+    case Define_1.Define.GameState.Towergame_End:\\r\\n                this.TowerGameStart(false);\\r\\n               
+    this.ChangeGameState(Define_1.Define.GameState.Game_Update);\\r\\n               
+    break;\\r\\n        }\\r\\n    }\\r\\n    UpdateSubState() {\\r\\n        //console.log(`substate
+    : ${this.gameSubState}`);\\r\\n        switch (this.gameSubState) {\\r\\n           
+    // case Define.GameSubState.None:\\r\\n            //     break;\\r\\n           
+    // // \uCE90\uB9AD\uD130 \uC0DD\uC131 \uB300\uAE30. \\r\\n            case Define_1.Define.GameSubState.WaitCreatePlayer_Start:\\r\\n               
+    this.ChangeSubGameState(Define_1.Define.GameSubState.WaitCreatePlayer_Update);\\r\\n               
+    break;\\r\\n            case Define_1.Define.GameSubState.WaitCreatePlayer_Update:\\r\\n               
+    this.ChangeSubGameState(Define_1.Define.GameSubState.WaitCreatePlayer_End);\\r\\n               
+    break;\\r\\n            case Define_1.Define.GameSubState.WaitCreatePlayer_End:\\r\\n               
+    this.ChangeSubGameState(Define_1.Define.GameSubState.Complete);\\r\\n               
+    break;\\r\\n            // case Define.GameSubState.Communication_Update:\\r\\n           
+    //     break;\\r\\n            // case Define.GameSubState.Communication_End:\\r\\n           
+    //     this.ChangeSubGameState(Define.GameSubState.Leaderboard_Start);\\r\\n           
+    //     break;\\r\\n            // // \uB9AC\uB354\uBCF4\uB4DC \uC815\uBCF4 \uC694\uCCAD\\r\\n           
+    // case Define.GameSubState.Leaderboard_Start:\\r\\n            //     LeaderboardMng.Instance.GetInitRank();\\r\\n           
+    //     this.ChangeSubGameState(Define.GameSubState.Leaderboard_Update);\\r\\n           
+    //     break;\\r\\n            // case Define.GameSubState.Leaderboard_Update:\\r\\n           
+    //     break;\\r\\n            // case Define.GameSubState.Leaderboard_End:\\r\\n           
+    //     this.ChangeSubGameState(Define.GameSubState.Complete);\\r\\n           
+    //     break;\\r\\n            // \uC2A4\uD0DC\uC774\uD130\uC2A4 \uC815\uBCF4
+    \uC694\uCCAD. \\r\\n            case Define_1.Define.GameSubState.Complete:\\r\\n               
+    break;\\r\\n        }\\r\\n    }\\r\\n    *LoadScene(sceneType, worldTID = -1)
+    {\\r\\n        //console.log(\\\"load Scene : \\\" + sceneType.toString(), \\\"
+    : \\\" + worldTID.toString());\\r\\n        let sceneName;\\r\\n        switch
+    (sceneType) {\\r\\n            case Define_1.Define.SceneType.Init:\\r\\n               
+    sceneName = \\\"Init\\\";\\r\\n                break;\\r\\n            case Define_1.Define.SceneType.Loading:\\r\\n               
+    sceneName = \\\"Loading\\\";\\r\\n                break;\\r\\n            case
+    Define_1.Define.SceneType.World:\\r\\n                sceneName = \\\"GameScene\\\";\\r\\n               
+    break;\\r\\n        }\\r\\n        let asyncLoad = UnityEngine_SceneManagement_1.SceneManager.LoadSceneAsync(sceneName);\\r\\n       
+    while (!asyncLoad.isDone) {\\r\\n            yield new UnityEngine_1.WaitForEndOfFrame;\\r\\n           
+    console.log(\\\"Scene Loading...\\\");\\r\\n        }\\r\\n        switch (sceneType)
+    {\\r\\n            case Define_1.Define.SceneType.Loading:\\r\\n               
+    this.ChangeGameState(Define_1.Define.GameState.Move_SceneLoading_End);\\r\\n               
+    break;\\r\\n            case Define_1.Define.SceneType.World:\\r\\n               
+    this.ChangeGameState(Define_1.Define.GameState.Move_SceneWorld_End);\\r\\n               
+    break;\\r\\n        }\\r\\n    }\\r\\n    ChangeGameState(state) {\\r\\n       
+    this.gameState = state;\\r\\n    }\\r\\n    ChangeSubGameState(state) {\\r\\n       
+    this.gameSubState = state;\\r\\n    }\\r\\n    TowerGameStart(isStart) {\\r\\n       
+    // \uC81C\uD398\uD1A0 \uCE74\uBA54\uB77C, \uD130\uCE58\uD328\uB4DC \uBE44\uD65C\uC131\uD654\\r\\n       
+    ZEPETO_Character_Controller_1.ZepetoPlayers.instance.controllerData.verticalController.gameObject.SetActive(!isStart);\\r\\n       
+    ZEPETO_Character_Controller_1.ZepetoPlayers.instance.LocalPlayer.zepetoCamera.gameObject.SetActive(!isStart);\\r\\n       
+    UIMng_1.default.Instance.UIZepetoPlayerControl.gameObject.SetActive(!isStart);\\r\\n       
+    ZEPETO_Character_Controller_1.ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character.enabled
+    = !isStart;\\r\\n        // let panel = UIMng.Instance.GetPanel<Panel_InGame>(\\\"Panel_InGame\\\");\\r\\n       
+    // panel.SetActive(isStart);\\r\\n        if (isStart == true) {\\r\\n           
+    ZepetoPlayersManager_1.default.instance.myCharacter.transform.position = new
+    UnityEngine_1.Vector3(-71, 0, 0);\\r\\n            ZepetoPlayersManager_1.default.instance.myCharacter.transform.rotation
+    = UnityEngine_1.Quaternion.identity;\\r\\n            // \uB9AC\uC18C\uC2A4 \uB9E4\uB2C8\uC800\uC5D0\uC11C
+    \uD560\uB2F9\uD574\uC57C\uD558\uB098? \uCEE8\uD2B8\uB864\uB7EC \uD560\uB2F9 \uD544\uC694
+    + \uC6C0\uC9C1\uC784 + \uBC1C\uD310\uC0DD\uC131\uB9CC\uD558\uBA74 \uB420\uB4EF\\r\\n           
+    //ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character.ZepetoAnimator  \\r\\n           
+    ZepetoPlayersManager_1.default.instance.myAnimator.runtimeAnimatorController
+    = this.t_infiniteAnimator;\\r\\n        }\\r\\n        else {\\r\\n           
+    ZepetoPlayersManager_1.default.instance.myCharacter.transform.position = new
+    UnityEngine_1.Vector3(0, 0, 0);\\r\\n            ZepetoPlayersManager_1.default.instance.myCharacter.transform.rotation
+    = UnityEngine_1.Quaternion.identity;\\r\\n            ZepetoPlayersManager_1.default.instance.myAnimator.runtimeAnimatorController
+    = this.t_ZepetoAnimator;\\r\\n        }\\r\\n        ZepetoPlayersManager_1.default.instance.myCharacter.characterController.enabled
+    = !isStart;\\r\\n    }\\r\\n}\\r\\nexports.default = GameManager;\\r\\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiR2FtZU1hbmFnZXIuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJHYW1lTWFuYWdlci50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOztBQUFBLDZDQUFzSztBQUN0SyxpREFBcUQ7QUFDckQsNkVBQTBIO0FBQzFILHNDQUFtQztBQUNuQyw2RUFBMkQ7QUFDM0QsaURBQTBDO0FBQzFDLG1DQUE0QjtBQUM1QixxREFBOEM7QUFDOUMsb0hBQTZHO0FBQzdHLHFEQUE4QztBQUM5QyxpREFBMEM7QUFFMUMsTUFBcUIsV0FBWSxTQUFRLHFDQUFxQjtJQUE5RDs7UUFnQlksY0FBUyxHQUFxQixlQUFNLENBQUMsU0FBUyxDQUFDLElBQUksQ0FBQztRQUdwRCxpQkFBWSxHQUF3QixlQUFNLENBQUMsWUFBWSxDQUFDLElBQUksQ0FBQztJQStRekUsQ0FBQztJQTdSVSxNQUFNLEtBQUssUUFBUTtRQUN0QixJQWpCQyxxQ0FBcUIsQ0FpSzJELFdBQVksQ0FoSnpGLElBQUksQ0FBQyxRQUFRLEVBQUksSUFBSSxHQUFFO1lBQ3ZCLElBQUksSUFBSSxHQUFHLElBQUksd0JBQVUsQ0FBQyxTQUFTLENBQUMsQ0FBQztZQUNyQyx3QkFBVSxDQUFDLGlCQUFpQixDQUFDLElBQUksQ0FBQyxDQUFDO1lBQ25DLElBQUksQ0FBQyxRQUFRLEdBQUcsSUFBSSxDQUFDLFlBQVksU0FBQyxXQUFXLEVBQUcsQ0FBQztTQUNwRDtRQUVELE9BQU8sSUFBSSxDQUFDLFFBQVEsQ0FBQztJQUN6QixDQUFDO0lBSUQsSUFBSSxZQUFZLEtBQUssT0FBTyxJQUFJLENBQUMsU0FBUyxDQUFDLENBQUMsQ0FBQztJQVU3QyxLQUFLO1FBQ0QsV0FBVyxDQUFDLFFBQVEsR0FBRyxJQUFJLENBQUM7UUFFNUIsSUFBSSxDQUFDLFNBQVMsR0FBRyxlQUFNLENBQUMsU0FBUyxDQUFDLFVBQVUsQ0FBQztRQUM3QyxJQUFJLENBQUMsWUFBWSxHQUFHLGVBQU0sQ0FBQyxZQUFZLENBQUMsSUFBSSxDQUFDO0lB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\",\"assetPath\":\"Assets/_Scripts/Manager/GameManager.ts\",\"manifest\":{\"properties\":[{\"assembly\":\"UnityEngine.CoreModule\",\"name\":\"camera\",\"type\":\"UnityEngine.Camera\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]},{\"assembly\":\"UnityEngine.AnimationModule\",\"name\":\"t_infiniteAnimator\",\"type\":\"UnityEngine.RuntimeAnimatorController\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]},{\"assembly\":\"UnityEngine.AnimationModule\",\"name\":\"t_ZepetoAnimator\",\"type\":\"UnityEngine.RuntimeAnimatorController\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]}],\"name\":\"GameManager\",\"description\":\"\",\"hasAnimatorMove\":false},\"isCompiled\":true}"
+  typescriptHash: 0fa5aeedbae3971c4a6f2c0930521f8e
+  onlyWriteTrigger: 0

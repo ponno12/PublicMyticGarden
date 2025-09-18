@@ -1,0 +1,30 @@
+fileFormatVersion: 2
+guid: 47658d9dcd868874680a148a2bf85234
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: "{\"source\":\"\\\"use strict\\\";\\r\\nObject.defineProperty(exports,
+    \\\"__esModule\\\", { value: true });\\r\\nconst UnityEngine_1 = require(\\\"UnityEngine\\\");\\r\\nconst
+    ZEPETO_Script_1 = require(\\\"ZEPETO.Script\\\");\\r\\nclass WorldController
+    extends ZEPETO_Script_1.ZepetoScriptBehaviour {\\r\\n    constructor() {\\r\\n       
+    super(...arguments);\\r\\n        this.IsInitComplete = false;\\r\\n    }\\r\\n   
+    Awake() {\\r\\n        this.Init();\\r\\n    }\\r\\n    // \uD558\uC704 zoneController
+    \uCC3E\uB294\uB2E4.\\r\\n    Init() {\\r\\n    }\\r\\n}\\r\\nexports.default
+    = WorldController;\\r\\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiV29ybGRDb250cm9sbGVyLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiV29ybGRDb250cm9sbGVyLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7O0FBQUEsNkNBQW9EO0FBQ3BELGlEQUFxRDtBQUVyRCxNQUFxQixlQUFnQixTQUFRLHFDQUFxQjtJQUFsRTs7UUFHVyxtQkFBYyxHQUFZLEtBQUssQ0FBQztJQWEzQyxDQUFDO0lBVkcsS0FBSztRQUNELElBQUksQ0FBQyxJQUFJLEVBQUUsQ0FBQztJQUNoQixDQUFDO0lBRUQseUJBQXlCO0lBQ3pCLElBQUk7SUFFSixDQUFDO0NBR0o7QUFoQkQsa0NBZ0JDIn0=\",\"assetPath\":\"Assets/_Scripts/Controller/WorldController.ts\",\"manifest\":{\"properties\":[{\"assembly\":\"mscorlib\",\"name\":\"IsInitComplete\",\"type\":\"System.Boolean\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]}],\"name\":\"WorldController\",\"description\":\"\",\"hasAnimatorMove\":false},\"isCompiled\":true}"
+  typescriptHash: 822478c23c83e8ce33d4c27bfca72164
+  onlyWriteTrigger: 0

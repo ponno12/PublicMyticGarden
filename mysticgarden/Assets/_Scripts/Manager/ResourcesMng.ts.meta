@@ -1,0 +1,134 @@
+fileFormatVersion: 2
+guid: 402234c49b5772045be003d4d8d5bbda
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: "{\"source\":\"\\\"use strict\\\";\\r\\nObject.defineProperty(exports,
+    \\\"__esModule\\\", { value: true });\\r\\nconst __UnityEngine__ = require(\\\"UnityEngine\\\");\\r\\nconst
+    UnityEngine_1 = require(\\\"UnityEngine\\\");\\r\\nconst ZEPETO_Script_1 = require(\\\"ZEPETO.Script\\\");\\r\\nconst
+    WorldController_1 = require(\\\"../Controller/WorldController\\\");\\r\\nconst
+    Define_1 = require(\\\"../Define\\\");\\r\\n// \uB7F0\uD0C0\uC784 \uBA54\uBAA8\uB9AC
+    \uAD00\uB828 \uC774\uC288\\r\\n// \uCD5C\uC18C\uC0AC\uC591 \uAC24S6 \\r\\n//
+    Resources.Load \uC0AC\uC6A9 \uD574\uC57C \uB420 \uC218\uB3C4 \uC788\uB2E4. \\r\\nclass
+    ResourcesMng extends ZEPETO_Script_1.ZepetoScriptBehaviour {\\r\\n    constructor()
+    {\\r\\n        super(...arguments);\\r\\n        this.obj = [];\\r\\n       
+    // \uB9F5 \uC624\uB9AC\uC9C0\uB0A0.\\r\\n        this.mapPrefab = [];\\r\\n       
+    // \uC774\uD399\uD2B8. *\uC778\uC2A4\uD399\uD130 \uB9AC\uC2A4\uD2B8 \uBB38\uC81C\uB85C
+    \uC0C8\uB85C \uB9CC\uB4EC. \\r\\n        this.effectsPrefab = [];\\r\\n       
+    this.tilePrefab = [];\\r\\n        // pool \\r\\n        this.ObjectPool = new
+    Map();\\r\\n    }\\r\\n    static get Instance() {\\r\\n        if (ZEPETO_Script_1.ZepetoScriptBehaviour.op_Equality(this.instance,
+    null)) {\\r\\n            var _obj = new UnityEngine_1.GameObject(\\\"ResourcesMng\\\");\\r\\n           
+    UnityEngine_1.GameObject.DontDestroyOnLoad(_obj);\\r\\n            this.instance
+    = _obj.AddComponent($typeof(ResourcesMng));\\r\\n        }\\r\\n        return
+    this.instance;\\r\\n    }\\r\\n    // \uD14C\uC774\uBE14 \uB370\uC774\uD130.
+    \\r\\n    // public tableDatas: TextAsset[] = [];\\r\\n    // private textAssetMap:
+    Map<string, TextAsset>;\\r\\n    // private constTable: Map<number, Table.const_table>;\\r\\n   
+    // get ConstTable(): Map<number, Table.const_table> { return this.constTable;
+    }\\r\\n    // // \uD074\uB77C\uC804\uC6A9.\\r\\n    // private soundTable: Map<number,
+    Table.sound_table>;\\r\\n    // get GetsoundTable(): Map<number, Table.sound_table>
+    { return this.soundTable; }\\r\\n    Awake() {\\r\\n        ResourcesMng.instance
+    = this;\\r\\n        //this.Init_TableData();\\r\\n    }\\r\\n    // \uD15C\uD50C\uB9BF
+    \uB370\uC774\uD130 \uCD08\uAE30\uD654. \\r\\n    // \uC2A4\uD0C0\uD2B8 \uC774\uC804\uC5D0
+    \uC644\uB8CC \uD574\uC57C\uB428. \\r\\n    // Init_TableData() {\\r\\n    //    
+    console.log(\\\"[ResourcesMng] Load Table Data\\\");\\r\\n    //     this.textAssetMap
+    = new Map(this.tableDatas.map(obj => [obj.name, obj]))\\r\\n    //     this.constTable
+    = this.LoadTable<Table.const_table>(\\\"const_table\\\", \\\"num_const_tid\\\");\\r\\n   
+    //     // \uD074\uB77C\uC804\uC6A9.\\r\\n    //     this.soundTable = this.LoadTable<Table.sound_table>(\\\"sound_table\\\",
+    \\\"num_sound_tid\\\");\\r\\n    //     //\uCCB4\uD06C \uB85C\uADF8.\\r\\n   
+    //     console.log(this.textTable.size + \\\"------------------------------------------\\\");\\r\\n   
+    //     //this.spawnCountTable.forEach((value, key, mapObject) => console.log(key
+    +' , ' +value.arr_num_spawn_rate[0]));\\r\\n    //     console.log(\\\"[ResourcesMng]
+    Load Complete Table Data\\\");\\r\\n    // }\\r\\n    // \uD074\uB77C\uC774\uC5B8\uD2B8\uB294
+    TextAsset \uC73C\uB85C \uB85C\uB4DC. \\r\\n    // LoadTable<T>(name: string,
+    key: string): Map<number, T> {\\r\\n    //     let textAsset: TextAsset = this.textAssetMap.get(name);\\r\\n   
+    //     let data = JSON.parse(textAsset.text) as T[];\\r\\n    //     return new
+    Map(data.map(obj => [obj[key], obj]));\\r\\n    // }\\r\\n    CreateWorld(worldName)
+    {\\r\\n        if (this.mapPrefab == null) {\\r\\n            console.error(\\\"[ResourcesMng]
+    world Container == null\\\");\\r\\n            return;\\r\\n        }\\r\\n       
+    // \uC0DD\uC131\uD560 \uC6D4\uB4DC\uAC00 \uC788\uB294\uC9C0 \uD655\uC778.\\r\\n       
+    let obj = this.mapPrefab.find(x => x.name === worldName);\\r\\n        if (__UnityEngine__.Object.op_Equality(obj,
+    null)) {\\r\\n            console.error(`[ResourcesMng] Not found worldObject,
+    name : ${worldName}`);\\r\\n            return;\\r\\n        }\\r\\n        //let
+    createMap = GameObject.Instantiate(obj, Vector3.zero, Quaternion.identity) as
+    GameObject;\\r\\n        let createMap = UnityEngine_1.GameObject.Instantiate(obj);\\r\\n       
+    return createMap.GetComponent($typeof(WorldController_1.default));\\r\\n    }\\r\\n   
+    // PlayEffect(name: string, pos: Vector3) {\\r\\n    //     let eff = this.TakeFromPool(Define.ObjectType.Effect,
+    name);\\r\\n    //     if (eff == null)\\r\\n    //         return;\\r\\n   
+    //     let ctr = eff.GetComponent<EffecController>();\\r\\n    //     if (ctr
+    == null) {\\r\\n    //         this.ReturnToPool(name, eff);\\r\\n    //        
+    return;\\r\\n    //     }\\r\\n    //     eff.transform.position = pos;\\r\\n   
+    //     ctr.Play(name);\\r\\n    //     return ctr;\\r\\n    // }\\r\\n    //
+    \uC2A4\uCF00\uC77C \uC870\uC815\uC740 \uBCF4\uB958 \uC0C1\uD0DC\\r\\n    // PlayEffectType(name:
+    string, pos: Vector3 ,shard : ShardController ) {\\r\\n    //     let eff = this.TakeFromPool(Define.ObjectType.Effect,
+    name);\\r\\n    //     if (eff == null)\\r\\n    //         return;\\r\\n   
+    //     let shardTid = shard.ShardTID\\r\\n    //     let ctr = eff.GetComponent<EffecController>();\\r\\n   
+    //     if (ctr == null) {\\r\\n    //         this.ReturnToPool(name, eff);\\r\\n   
+    //         return;\\r\\n    //     }\\r\\n    //     switch (shardTid) {\\r\\n   
+    //         case 6:\\r\\n    //         case 7:\\r\\n    //             eff.transform.localScale
+    = new Vector3(3,3,3);\\r\\n    //             break;\\r\\n    //         case
+    10:\\r\\n    //         case 11:\\r\\n    //             eff.transform.localScale
+    = new Vector3(2,2,2);\\r\\n    //             break;\\r\\n    //         default:\\r\\n   
+    //             break;\\r\\n    //     }\\r\\n    //     eff.transform.position
+    = pos;\\r\\n    //     ctr.Play(name);\\r\\n    //     return ctr;\\r\\n    //
+    }\\r\\n    // \uAC00\uC838\uC624\uAE30.\\r\\n    TakeFromPool(type, name) {\\r\\n       
+    if (this.ObjectPool.has(name) == false) {\\r\\n            this.CreatePoolItem(type,
+    name);\\r\\n        }\\r\\n        // \uC4F8\uC218 \uC788\uB294\uAC8C \uC5C6\uC744\uB54C.
+    \\r\\n        if (this.ObjectPool.get(name).length <= 0) {\\r\\n            this.CreatePoolItem(type,
+    name);\\r\\n        }\\r\\n        // \uD55C\uBC88\uB354 \uCCB4\uD06C. \\r\\n       
+    if (this.ObjectPool.get(name) == null)\\r\\n            return;\\r\\n       
+    var target = this.ObjectPool.get(name).pop();\\r\\n        // \uAEBC\uB0B4 \uC654\uB294\uC9C0
+    \uD55C\uBC88\uB354 \uCCB4\uD06C. \\r\\n        if (__UnityEngine__.Object.op_Equality(target,
+    null))\\r\\n            return;\\r\\n        target.transform.SetParent(null);\\r\\n       
+    target.SetActive(true);\\r\\n        return target;\\r\\n    }\\r\\n    // \uBC18\uB0A9\uD558\uAE30.\\r\\n   
+    ReturnToPool(name, obj, scale = UnityEngine_1.Vector3.zero) {\\r\\n        //
+    \uBE44\uD65C\uC131\uD654. \uD480\uB9E4\uB2C8\uC800 \uD558\uC704\uB85C \uC634\uAE40.
+    \\r\\n        obj.SetActive(false);\\r\\n        obj.transform.SetParent(this.transform);\\r\\n       
+    obj.transform.position = UnityEngine_1.Vector3.zero;\\r\\n        if (UnityEngine_1.Vector3.op_Inequality(scale,
+    UnityEngine_1.Vector3.zero)) {\\r\\n            obj.transform.localScale = scale;\\r\\n       
+    }\\r\\n        // \uC2A4\uCF00\uC77C \uC870\uC815\uC774 \uD544\uC694\uD558\uBA74
+    \uD65C\uC131\uD654\\r\\n        //obj.transform.localScale = Vector3.one;\\r\\n       
+    // \uD480 \uCEE8\uD14C\uC774\uB108\uAC00 \uC5C6\uC73C\uBA74 \uC0DD\uC131. \\r\\n       
+    if (this.ObjectPool.has(name) == false) {\\r\\n            this.ObjectPool.set(name,
+    new Array());\\r\\n        }\\r\\n        // \uD480\uC5D0 \uCD94\uAC00. \\r\\n       
+    this.ObjectPool.get(name).push(obj);\\r\\n    }\\r\\n    // \uC544\uC774\uD15C
+    \uC0DD\uC131. \\r\\n    CreatePoolItem(type, name) {\\r\\n        let obj;\\r\\n       
+    switch (type) {\\r\\n            case Define_1.Define.ObjectType.Tile:\\r\\n               
+    obj = this.tilePrefab.find(x => x.name === name);\\r\\n                break;\\r\\n           
+    // case Define.ObjectType.Sini:\\r\\n            //     obj = this.siniPrefab.find(x
+    => x.name === name);\\r\\n            //     break;\\r\\n            // case
+    Define.ObjectType.Effect:\\r\\n            //     obj = this.effectsPrefab.find(x
+    => x.name === name);\\r\\n            //     break;\\r\\n            // case
+    Define.ObjectType.Line:\\r\\n            //     obj = this.linePrefab;\\r\\n           
+    //     break;\\r\\n            // case Define.ObjectType.Reward:\\r\\n           
+    //     obj = this.uiPrefab;\\r\\n            //     break;\\r\\n        }\\r\\n       
+    if (__UnityEngine__.Object.op_Equality(obj, null)) {\\r\\n            console.error(`[ResourcesMng]
+    Not found Origin name : ${name}`);\\r\\n            return;\\r\\n        }\\r\\n       
+    // \uC0DD\uC131.\\r\\n        var newObj = UnityEngine_1.GameObject.Instantiate(obj);\\r\\n       
+    newObj.name = name;\\r\\n        this.ReturnToPool(name, newObj);\\r\\n    }\\r\\n   
+    // \uC544\uC774\uD15C \uC0AD\uC81C.\\r\\n    DestroyPoolItem(type, obj) {\\r\\n   
+    }\\r\\n    GetIcon(name, type = Define_1.Define.AtlasType.main) {\\r\\n       
+    if (__UnityEngine__.Object.op_Equality(this.iconAtlas, null)) {\\r\\n           
+    return null;\\r\\n        }\\r\\n        let sprite;\\r\\n        switch (type)
+    {\\r\\n            case Define_1.Define.AtlasType.main:\\r\\n               
+    sprite = this.iconAtlas.GetSprite(name);\\r\\n                break;\\r\\n           
+    case Define_1.Define.AtlasType.exclusive:\\r\\n                //sprite = this.exclusiveAtlas.GetSprite(name);\\r\\n               
+    break;\\r\\n        }\\r\\n        if (sprite == null) {\\r\\n            return
+    null;\\r\\n        }\\r\\n        return sprite;\\r\\n    }\\r\\n}\\r\\nexports.default
+    = ResourcesMng;\\r\\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiUmVzb3VyY2VzTW5nLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiUmVzb3VyY2VzTW5nLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7OztBQUFBLDZDQUF1SDtBQUV2SCxpREFBcUQ7QUFHckQsbUVBQTREO0FBQzVELHNDQUFtQztBQUVuQyxnQkFBZ0I7QUFDaEIsWUFBWTtBQUNaLGlDQUFpQztBQUNqQyxNQUFxQixZQUFhLFNBQVEscUNBQXFCO0lBQS9EOztRQWNXLFFBQUcsR0FBaUIsRUFBRSxDQUFDO1FBRTlCLFVBQVU7UUFDSCxjQUFTLEdBQWlCLEVBQUUsQ0FBQztRQUVwQyw2QkFBNkI7UUFDdEIsa0JBQWEsR0FBaUIsRUFBRSxDQUFDO1FBUWpDLGVBQVUsR0FBZ0IsRUFBRSxDQUFDO1FBR3BDLFFBQVE7UUFDQSxlQUFVLEdBQW1DLElBQUksR0FBRyxFQUE2QixDQUFDO0lBd085RixDQUFDO0lBclFVLE1BQU0sS0FBSyxRQUFRO1FBQ3RCLElBYkMscUNBQXFCLENBK09sQixXQUFLLENBbE9MLElBQUksQ0FBQyxRQUFRLEVBQUksSUFBSSxHQUFFO1lBQ3ZCLElBQUksSUFBSSxHQUFHLElBQUksd0JBQVUsQ0FBQyxjQUFjLENBQUMsQ0FBQztZQUMxQyx3QkFBVSxDQUFDLGlCQUFpQixDQUFDLElBQUksQ0FBQyxDQUFDO1lBQ25DLElBQUksQ0FBQyxRQUFRLEdBQUcsSUFBSSxDQUFDLFlBQVksU0FBQyxZQUFZLEVBQUcsQ0FBQztTQUNyRDtRQUVELE9BQU8sSUFBSSxDQUFDLFFBQVEsQ0FBQztJQUN6QixDQUFDO0lBd0JELFlBQVk7SUFDWix1Q0FBdUM7SUFFdkMsZ0RBQWdEO0lBRWhELHNEQUFzRDtJQUN0RCwrRUFBK0U7SUFJL0UsV0FBVztJQUNYLHNEQUFzRDtJQUN0RCxrRkFBa0Y7SUFFbEYsS0FBSztRQUNELFlBQVksQ0FBQyxRQUFRLEdBQUcsSUFBSSxDQUFDO1FBQzdCLHdCQUF3QjtJQUM1QixDQUFDO0lBR0QsZ0JBQWdCO0lBQ2hC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\",\"assetPath\":\"Assets/_Scripts/Manager/ResourcesMng.ts\",\"manifest\":{\"properties\":[{\"assembly\":\"UnityEngine.CoreModule\",\"name\":\"obj\",\"type\":\"UnityEngine.GameObject[]\",\"isArray\":true,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]},{\"assembly\":\"UnityEngine.CoreModule\",\"name\":\"mapPrefab\",\"type\":\"UnityEngine.GameObject[]\",\"isArray\":true,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]},{\"assembly\":\"UnityEngine.CoreModule\",\"name\":\"effectsPrefab\",\"type\":\"UnityEngine.GameObject[]\",\"isArray\":true,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]},{\"assembly\":\"UnityEngine.CoreModule\",\"name\":\"uiPrefab\",\"type\":\"UnityEngine.GameObject\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]},{\"assembly\":\"UnityEngine.CoreModule\",\"name\":\"iconAtlas\",\"type\":\"UnityEngine.U2D.SpriteAtlas\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]},{\"assembly\":\"UnityEngine.CoreModule\",\"name\":\"tilePrefab\",\"type\":\"UnityEngine.GameObject[]\",\"isArray\":true,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]}],\"name\":\"ResourcesMng\",\"description\":\"\",\"hasAnimatorMove\":false},\"isCompiled\":true}"
+  typescriptHash: 90cd7cee41891cfdf4191bb3e8de2927
+  onlyWriteTrigger: 0

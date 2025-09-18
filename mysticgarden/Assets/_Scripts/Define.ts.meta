@@ -1,0 +1,125 @@
+fileFormatVersion: 2
+guid: c925660da89aa024cb256c8be1c39f55
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: "{\"source\":\"\\\"use strict\\\";\\r\\nObject.defineProperty(exports,
+    \\\"__esModule\\\", { value: true });\\r\\nexports.Define = void 0;\\r\\nvar
+    Define;\\r\\n(function (Define) {\\r\\n    let GameState;\\r\\n    (function
+    (GameState) {\\r\\n        GameState[GameState[\\\"None\\\"] = 0] = \\\"None\\\";\\r\\n       
+    GameState[GameState[\\\"Init_Start\\\"] = 1] = \\\"Init_Start\\\";\\r\\n       
+    GameState[GameState[\\\"Init_Update\\\"] = 2] = \\\"Init_Update\\\";\\r\\n       
+    GameState[GameState[\\\"Init_End\\\"] = 3] = \\\"Init_End\\\";\\r\\n        GameState[GameState[\\\"CI\\\"]
+    = 4] = \\\"CI\\\";\\r\\n        GameState[GameState[\\\"BI\\\"] = 5] = \\\"BI\\\";\\r\\n       
+    // \uB85C\uB529 \uC52C\uC73C\uB85C \uC774\uB3D9.  \\r\\n        GameState[GameState[\\\"Move_SceneLoading_Start\\\"]
+    = 6] = \\\"Move_SceneLoading_Start\\\";\\r\\n        GameState[GameState[\\\"Move_SceneLoading_Update\\\"]
+    = 7] = \\\"Move_SceneLoading_Update\\\";\\r\\n        GameState[GameState[\\\"Move_SceneLoading_End\\\"]
+    = 8] = \\\"Move_SceneLoading_End\\\";\\r\\n        // \uB85C\uB529\uC52C \uC9C4\uC785.
+    \\r\\n        GameState[GameState[\\\"SceneLoading_Start\\\"] = 9] = \\\"SceneLoading_Start\\\";\\r\\n       
+    GameState[GameState[\\\"SceneLoading_Update\\\"] = 10] = \\\"SceneLoading_Update\\\";\\r\\n       
+    GameState[GameState[\\\"SceneLoading_End\\\"] = 11] = \\\"SceneLoading_End\\\";\\r\\n       
+    // \uC6D4\uB4DC\uB85C \uC774\uB3D9. \\r\\n        GameState[GameState[\\\"Move_SceneWorld_Start\\\"]
+    = 12] = \\\"Move_SceneWorld_Start\\\";\\r\\n        GameState[GameState[\\\"Move_SceneWorld_Update\\\"]
+    = 13] = \\\"Move_SceneWorld_Update\\\";\\r\\n        GameState[GameState[\\\"Move_SceneWorld_End\\\"]
+    = 14] = \\\"Move_SceneWorld_End\\\";\\r\\n        // \uC6D4\uB4DC \uCD08\uAE30\uD654.\\r\\n       
+    GameState[GameState[\\\"Init_Wolrd_Start\\\"] = 15] = \\\"Init_Wolrd_Start\\\";\\r\\n       
+    GameState[GameState[\\\"Init_Wolrd_Update\\\"] = 16] = \\\"Init_Wolrd_Update\\\";\\r\\n       
+    GameState[GameState[\\\"Init_Wolrd_End\\\"] = 17] = \\\"Init_Wolrd_End\\\";\\r\\n       
+    GameState[GameState[\\\"Game_Start\\\"] = 18] = \\\"Game_Start\\\";\\r\\n       
+    GameState[GameState[\\\"Game_Update\\\"] = 19] = \\\"Game_Update\\\";\\r\\n       
+    GameState[GameState[\\\"Game_End\\\"] = 20] = \\\"Game_End\\\";\\r\\n       
+    GameState[GameState[\\\"Towergame_Start\\\"] = 21] = \\\"Towergame_Start\\\";\\r\\n       
+    GameState[GameState[\\\"Towergame_Update\\\"] = 22] = \\\"Towergame_Update\\\";\\r\\n       
+    GameState[GameState[\\\"Towergame_End\\\"] = 23] = \\\"Towergame_End\\\";\\r\\n       
+    GameState[GameState[\\\"Wait\\\"] = 24] = \\\"Wait\\\";\\r\\n    })(GameState
+    = Define.GameState || (Define.GameState = {}));\\r\\n    let GameSubState;\\r\\n   
+    (function (GameSubState) {\\r\\n        GameSubState[GameSubState[\\\"None\\\"]
+    = 0] = \\\"None\\\";\\r\\n        // \uCE90\uB9AD\uD130 \uC0DD\uC131 \uB300\uAE30
+    \\r\\n        GameSubState[GameSubState[\\\"WaitCreatePlayer_Start\\\"] = 1]
+    = \\\"WaitCreatePlayer_Start\\\";\\r\\n        GameSubState[GameSubState[\\\"WaitCreatePlayer_Update\\\"]
+    = 2] = \\\"WaitCreatePlayer_Update\\\";\\r\\n        GameSubState[GameSubState[\\\"WaitCreatePlayer_End\\\"]
+    = 3] = \\\"WaitCreatePlayer_End\\\";\\r\\n        //CommunicationTool\\r\\n       
+    GameSubState[GameSubState[\\\"Communication_Start\\\"] = 4] = \\\"Communication_Start\\\";\\r\\n       
+    GameSubState[GameSubState[\\\"Communication_Update\\\"] = 5] = \\\"Communication_Update\\\";\\r\\n       
+    GameSubState[GameSubState[\\\"Communication_End\\\"] = 6] = \\\"Communication_End\\\";\\r\\n       
+    GameSubState[GameSubState[\\\"Leaderboard_Start\\\"] = 7] = \\\"Leaderboard_Start\\\";\\r\\n       
+    GameSubState[GameSubState[\\\"Leaderboard_Update\\\"] = 8] = \\\"Leaderboard_Update\\\";\\r\\n       
+    GameSubState[GameSubState[\\\"Leaderboard_End\\\"] = 9] = \\\"Leaderboard_End\\\";\\r\\n       
+    GameSubState[GameSubState[\\\"Complete\\\"] = 10] = \\\"Complete\\\";\\r\\n   
+    })(GameSubState = Define.GameSubState || (Define.GameSubState = {}));\\r\\n   
+    let T_GameState;\\r\\n    (function (T_GameState) {\\r\\n        T_GameState[T_GameState[\\\"None\\\"]
+    = 0] = \\\"None\\\";\\r\\n        T_GameState[T_GameState[\\\"Play\\\"] = 1]
+    = \\\"Play\\\";\\r\\n        T_GameState[T_GameState[\\\"Pause\\\"] = 2] = \\\"Pause\\\";\\r\\n       
+    T_GameState[T_GameState[\\\"GameOver\\\"] = 3] = \\\"GameOver\\\";\\r\\n       
+    T_GameState[T_GameState[\\\"GameEnd\\\"] = 4] = \\\"GameEnd\\\";\\r\\n    })(T_GameState
+    = Define.T_GameState || (Define.T_GameState = {}));\\r\\n    let ObjectType;\\r\\n   
+    (function (ObjectType) {\\r\\n        ObjectType[ObjectType[\\\"Tile\\\"] = 0]
+    = \\\"Tile\\\";\\r\\n    })(ObjectType = Define.ObjectType || (Define.ObjectType
+    = {}));\\r\\n    let SceneType;\\r\\n    (function (SceneType) {\\r\\n       
+    SceneType[SceneType[\\\"Init\\\"] = 0] = \\\"Init\\\";\\r\\n        SceneType[SceneType[\\\"Loading\\\"]
+    = 1] = \\\"Loading\\\";\\r\\n        SceneType[SceneType[\\\"World\\\"] = 2]
+    = \\\"World\\\";\\r\\n    })(SceneType = Define.SceneType || (Define.SceneType
+    = {}));\\r\\n    let UIMsgBoxType;\\r\\n    (function (UIMsgBoxType) {\\r\\n       
+    UIMsgBoxType[UIMsgBoxType[\\\"One\\\"] = 0] = \\\"One\\\";\\r\\n        UIMsgBoxType[UIMsgBoxType[\\\"Two\\\"]
+    = 1] = \\\"Two\\\";\\r\\n        UIMsgBoxType[UIMsgBoxType[\\\"ImageOne\\\"]
+    = 2] = \\\"ImageOne\\\";\\r\\n    })(UIMsgBoxType = Define.UIMsgBoxType || (Define.UIMsgBoxType
+    = {}));\\r\\n    let LogType;\\r\\n    (function (LogType) {\\r\\n        LogType[\\\"Log\\\"]
+    = \\\"Log\\\";\\r\\n        LogType[\\\"Info\\\"] = \\\"Info\\\";\\r\\n       
+    LogType[\\\"Error\\\"] = \\\"Error\\\";\\r\\n        LogType[\\\"Warn\\\"] =
+    \\\"Warn\\\";\\r\\n    })(LogType = Define.LogType || (Define.LogType = {}));\\r\\n   
+    let ResultCode;\\r\\n    (function (ResultCode) {\\r\\n        ResultCode[ResultCode[\\\"complete\\\"]
+    = 0] = \\\"complete\\\";\\r\\n        ResultCode[ResultCode[\\\"failed\\\"] =
+    1] = \\\"failed\\\";\\r\\n        ResultCode[ResultCode[\\\"failed_gatcha\\\"]
+    = 2] = \\\"failed_gatcha\\\";\\r\\n        ResultCode[ResultCode[\\\"failed_gatcha_load_table\\\"]
+    = 3] = \\\"failed_gatcha_load_table\\\";\\r\\n        ResultCode[ResultCode[\\\"failed_gatcha_empty_slot\\\"]
+    = 4] = \\\"failed_gatcha_empty_slot\\\";\\r\\n        ResultCode[ResultCode[\\\"failed_gatcha_create_key\\\"]
+    = 5] = \\\"failed_gatcha_create_key\\\";\\r\\n        ResultCode[ResultCode[\\\"failed_gatcha_notenough_coin\\\"]
+    = 100] = \\\"failed_gatcha_notenough_coin\\\";\\r\\n        ResultCode[ResultCode[\\\"failed_Sini_Upgrade\\\"]
+    = 101] = \\\"failed_Sini_Upgrade\\\";\\r\\n        ResultCode[ResultCode[\\\"failed_siniupgrade_null\\\"]
+    = 102] = \\\"failed_siniupgrade_null\\\";\\r\\n        ResultCode[ResultCode[\\\"targetdata\\\"]
+    = 103] = \\\"targetdata\\\";\\r\\n        ResultCode[ResultCode[\\\"failed_sini_delete_NotFoundStorge\\\"]
+    = 104] = \\\"failed_sini_delete_NotFoundStorge\\\";\\r\\n        // dev\\r\\n       
+    ResultCode[ResultCode[\\\"reset\\\"] = 105] = \\\"reset\\\";\\r\\n    })(ResultCode
+    = Define.ResultCode || (Define.ResultCode = {}));\\r\\n    let SoundType;\\r\\n   
+    (function (SoundType) {\\r\\n        SoundType[SoundType[\\\"ui_btn_affirmative\\\"]
+    = 20001] = \\\"ui_btn_affirmative\\\";\\r\\n        SoundType[SoundType[\\\"ui_btn_negative\\\"]
+    = 20002] = \\\"ui_btn_negative\\\";\\r\\n        SoundType[SoundType[\\\"sfx_coin_get_00\\\"]
+    = 30001] = \\\"sfx_coin_get_00\\\";\\r\\n        SoundType[SoundType[\\\"sfx_coin_get_01\\\"]
+    = 30002] = \\\"sfx_coin_get_01\\\";\\r\\n        SoundType[SoundType[\\\"sfx_shard_break\\\"]
+    = 30003] = \\\"sfx_shard_break\\\";\\r\\n        SoundType[SoundType[\\\"sfx_coin_collect\\\"]
+    = 30004] = \\\"sfx_coin_collect\\\";\\r\\n        SoundType[SoundType[\\\"sfx_shini_mining_00\\\"]
+    = 30005] = \\\"sfx_shini_mining_00\\\";\\r\\n        SoundType[SoundType[\\\"sfx_shini_mining_01\\\"]
+    = 30006] = \\\"sfx_shini_mining_01\\\";\\r\\n        SoundType[SoundType[\\\"sfx_shini_mining_02\\\"]
+    = 30007] = \\\"sfx_shini_mining_02\\\";\\r\\n        SoundType[SoundType[\\\"sfx_shini_bounce_00\\\"]
+    = 30008] = \\\"sfx_shini_bounce_00\\\";\\r\\n        SoundType[SoundType[\\\"sfx_shard_mining_00\\\"]
+    = 30009] = \\\"sfx_shard_mining_00\\\";\\r\\n        SoundType[SoundType[\\\"sfx_dreambox_roll_negative_00\\\"]
+    = 30010] = \\\"sfx_dreambox_roll_negative_00\\\";\\r\\n        SoundType[SoundType[\\\"sfx_dreambox_roll_positive_00\\\"]
+    = 30011] = \\\"sfx_dreambox_roll_positive_00\\\";\\r\\n        SoundType[SoundType[\\\"sfx_dreambox_roll_00\\\"]
+    = 30012] = \\\"sfx_dreambox_roll_00\\\";\\r\\n        SoundType[SoundType[\\\"sfx_teleport_add\\\"]
+    = 30013] = \\\"sfx_teleport_add\\\";\\r\\n    })(SoundType = Define.SoundType
+    || (Define.SoundType = {}));\\r\\n    let UITextType;\\r\\n    (function (UITextType)
+    {\\r\\n    })(UITextType = Define.UITextType || (Define.UITextType = {}));\\r\\n   
+    let AtlasType;\\r\\n    (function (AtlasType) {\\r\\n        AtlasType[AtlasType[\\\"main\\\"]
+    = 1] = \\\"main\\\";\\r\\n        AtlasType[AtlasType[\\\"exclusive\\\"] = 2]
+    = \\\"exclusive\\\";\\r\\n    })(AtlasType = Define.AtlasType || (Define.AtlasType
+    = {}));\\r\\n    let Direction;\\r\\n    (function (Direction) {\\r\\n       
+    Direction[Direction[\\\"left\\\"] = 0] = \\\"left\\\";\\r\\n        Direction[Direction[\\\"right\\\"]
+    = 1] = \\\"right\\\";\\r\\n    })(Direction = Define.Direction || (Define.Direction
+    = {}));\\r\\n})(Define = exports.Define || (exports.Define = {}));\\r\\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiRGVmaW5lLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiRGVmaW5lLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7OztBQUFBLElBQWlCLE1BQU0sQ0E4SnRCO0FBOUpELFdBQWlCLE1BQU07SUFFbkIsSUFBWSxTQXdDWDtJQXhDRCxXQUFZLFNBQVM7UUFDakIseUNBQUksQ0FBQTtRQUVKLHFEQUFVLENBQUE7UUFDVix1REFBVyxDQUFBO1FBQ1gsaURBQVEsQ0FBQTtRQUVSLHFDQUFFLENBQUE7UUFDRixxQ0FBRSxDQUFBO1FBRUYsZUFBZTtRQUNmLCtFQUF1QixDQUFBO1FBQ3ZCLGlGQUF3QixDQUFBO1FBQ3hCLDJFQUFxQixDQUFBO1FBRXJCLFdBQVc7UUFDWCxxRUFBa0IsQ0FBQTtRQUNsQix3RUFBbUIsQ0FBQTtRQUNuQixrRUFBZ0IsQ0FBQTtRQUVoQixXQUFXO1FBQ1gsNEVBQXFCLENBQUE7UUFDckIsOEVBQXNCLENBQUE7UUFDdEIsd0VBQW1CLENBQUE7UUFHbkIsVUFBVTtRQUNWLGtFQUFnQixDQUFBO1FBQ2hCLG9FQUFpQixDQUFBO1FBQ2pCLDhEQUFjLENBQUE7UUFFZCxzREFBVSxDQUFBO1FBQ1Ysd0RBQVcsQ0FBQTtRQUNYLGtEQUFRLENBQUE7UUFFUixnRUFBZSxDQUFBO1FBQ2Ysa0VBQWdCLENBQUE7UUFDaEIsNERBQWEsQ0FBQTtRQUViLDBDQUFJLENBQUE7SUFDUixDQUFDLEVBeENXLFNBQVMsR0FBVCxnQkFBUyxLQUFULGdCQUFTLFFBd0NwQjtJQUVELElBQVksWUFrQlg7SUFsQkQsV0FBWSxZQUFZO1FBQ3BCLCtDQUFJLENBQUE7UUFFSixhQUFhO1FBQ2IsbUZBQXNCLENBQUE7UUFDdEIscUZBQXVCLENBQUE7UUFDdkIsK0VBQW9CLENBQUE7UUFFcEIsbUJBQW1CO1FBQ25CLDZFQUFtQixDQUFBO1FBQ25CLCtFQUFvQixDQUFBO1FBQ3BCLHlFQUFpQixDQUFBO1FBRWpCLHlFQUFpQixDQUFBO1FBQ2pCLDJFQUFrQixDQUFB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\",\"assetPath\":\"Assets/_Scripts/Define.ts\",\"manifest\":{\"properties\":[],\"name\":\"Define\",\"description\":\"\",\"hasAnimatorMove\":false},\"isCompiled\":true}"
+  typescriptHash: 131a24837b93419aae5dd09f2637f026
+  onlyWriteTrigger: 0

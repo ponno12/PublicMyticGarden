@@ -1,0 +1,48 @@
+fileFormatVersion: 2
+guid: d58a66354f0f2f14a9ab5442486a1c48
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: "{\"source\":\"\\\"use strict\\\";\\r\\nObject.defineProperty(exports,
+    \\\"__esModule\\\", { value: true });\\r\\nconst ZEPETO_Script_1 = require(\\\"ZEPETO.Script\\\");\\r\\nconst
+    UIMng_1 = require(\\\"../Manager/UIMng\\\");\\r\\nconst GameManager_1 = require(\\\"../Manager/GameManager\\\");\\r\\nconst
+    Define_1 = require(\\\"../Define\\\");\\r\\nconst ZepetoPlayersManager_1 = require(\\\"../../Zepeto
+    Multiplay Component/ZepetoScript/Player/ZepetoPlayersManager\\\");\\r\\nconst
+    TowerGameMng_1 = require(\\\"../Manager/TowerGameMng\\\");\\r\\nclass Panel_InGame
+    extends ZEPETO_Script_1.ZepetoScriptBehaviour {\\r\\n    Awake() {\\r\\n       
+    UIMng_1.default.Instance.AddPanel(\\\"Panel_InGame\\\", this);\\r\\n        this.SetActive(false);\\r\\n   
+    }\\r\\n    Start() {\\r\\n        this.btn_back.onClick.AddListener(() => {\\r\\n           
+    GameManager_1.default.Instance.ChangeGameState(Define_1.Define.GameState.Towergame_End);\\r\\n       
+    });\\r\\n        this.btn_forward.onClick.AddListener(() => {\\r\\n           
+    this.ClickForward();\\r\\n        });\\r\\n        this.btn_swap.onClick.AddListener(()
+    => {\\r\\n            this.clickSwap();\\r\\n        });\\r\\n    }\\r\\n   
+    SetActive(bool) {\\r\\n        this.gameObject.SetActive(bool);\\r\\n    }\\r\\n   
+    ClickForward() {\\r\\n        ZepetoPlayersManager_1.default.instance.myAnimator.SetTrigger(\\\"Jump\\\");\\r\\n       
+    TowerGameMng_1.default.Instance.GameMoving(TowerGameMng_1.default.Instance.direction);\\r\\n   
+    }\\r\\n    clickSwap() {\\r\\n        if (TowerGameMng_1.default.Instance.direction
+    == Define_1.Define.Direction.left) {\\r\\n            TowerGameMng_1.default.Instance.direction
+    = Define_1.Define.Direction.right;\\r\\n        }\\r\\n        else {\\r\\n           
+    TowerGameMng_1.default.Instance.direction = Define_1.Define.Direction.left;\\r\\n       
+    }\\r\\n        ZepetoPlayersManager_1.default.instance.myAnimator.SetTrigger(\\\"Jump\\\");\\r\\n       
+    TowerGameMng_1.default.Instance.GameMoving(TowerGameMng_1.default.Instance.direction);\\r\\n   
+    }\\r\\n    // hp\uAC12\uC740 \uB2E4\uB978\uACF3\uC5D0\uC11C \uAD00\uB9AC\uD558\uACE0
+    \uC5EC\uAE30\uC11C\uB294 \uADF8\uB0E5 \uC804\uCCB4\uAC12\uC744 \uB300\uC785\uC2DC\uD0A4\uC790.\\r\\n   
+    HPChange(value) {\\r\\n        this.slider_Hpbar.value = value;\\r\\n    }\\r\\n}\\r\\nexports.default
+    = Panel_InGame;\\r\\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiUGFuZWxfSW5HYW1lLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiUGFuZWxfSW5HYW1lLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7O0FBQUEsaURBQXFEO0FBRXJELDRDQUFxQztBQUNyQyx3REFBaUQ7QUFDakQsc0NBQW1DO0FBQ25DLG9IQUE2RztBQUM3RywwREFBbUQ7QUFFbkQsTUFBcUIsWUFBYSxTQUFRLHFDQUFxQjtJQU8zRCxLQUFLO1FBQ0QsZUFBSyxDQUFDLFFBQVEsQ0FBQyxRQUFRLENBQWUsY0FBYyxFQUFFLElBQUksQ0FBQyxDQUFDO1FBRTVELElBQUksQ0FBQyxTQUFTLENBQUMsS0FBSyxDQUFDLENBQUM7SUFDMUIsQ0FBQztJQUVELEtBQUs7UUFDRCxJQUFJLENBQUMsUUFBUSxDQUFDLE9BQU8sQ0FBQyxXQUFXLENBQUMsR0FBRyxFQUFFO1lBQ25DLHFCQUFXLENBQUMsUUFBUSxDQUFDLGVBQWUsQ0FBQyxlQUFNLENBQUMsU0FBUyxDQUFDLGFBQWEsQ0FBQyxDQUFDO1FBQ3pFLENBQUMsQ0FBQyxDQUFBO1FBQ0YsSUFBSSxDQUFDLFdBQVcsQ0FBQyxPQUFPLENBQUMsV0FBVyxDQUFDLEdBQUcsRUFBRTtZQUN0QyxJQUFJLENBQUMsWUFBWSxFQUFFLENBQUM7UUFDeEIsQ0FBQyxDQUFDLENBQUE7UUFDRixJQUFJLENBQUMsUUFBUSxDQUFDLE9BQU8sQ0FBQyxXQUFXLENBQUMsR0FBRSxFQUFFO1lBQ2xDLElBQUksQ0FBQyxTQUFTLEVBQUUsQ0FBQztRQUNyQixDQUFDLENBQUMsQ0FBQTtJQUVOLENBQUM7SUFFRCxTQUFTLENBQUMsSUFBVTtRQUNoQixJQUFJLENBQUMsVUFBVSxDQUFDLFNBQVMsQ0FBQyxJQUFJLENBQUMsQ0FBQztJQUNwQyxDQUFDO0lBRUQsWUFBWTtRQUNSLDhCQUFvQixDQUFDLFFBQVEsQ0FBQyxVQUFVLENBQUMsVUFBVSxDQUFDLE1BQU0sQ0FBQyxDQUFDO1FBQzVELHNCQUFZLENBQUMsUUFBUSxDQUFDLFVBQVUsQ0FBQyxzQkFBWSxDQUFDLFFBQVEsQ0FBQyxTQUFTLENBQUMsQ0FBQztJQUV0RSxDQUFDO0lBRUQsU0FBUztRQUNMLElBQUcsc0JBQVksQ0FBQyxRQUFRLENBQUMsU0FBUyxJQUFJLGVBQU0sQ0FBQyxTQUFTLENBQUMsSUFBSSxFQUFDO1lBQ3hELHNCQUFZLENBQUMsUUFBUSxDQUFDLFNBQVMsR0FBRyxlQUFNLENBQUMsU0FBUyxDQUFDLEtBQUssQ0FBQztTQUM1RDthQUFJO1lBQ0Qsc0JBQVksQ0FBQyxRQUFRLENBQUMsU0FBUyxHQUFHLGVBQU0sQ0FBQyxTQUFTLENBQUMsSUFBSSxDQUFDO1NBQzNEO1FBRUQsOEJBQW9CLENBQUMsUUFBUSxDQUFDLFVBQVUsQ0FBQyxVQUFVLENBQUMsTUFBTSxDQUFDLENBQUM7UUFDNUQsc0JBQVksQ0FBQyxRQUFRLENBQUMsVUFBVSxDQUFDLHNCQUFZLENBQUMsUUFBUSxDQUFDLFNBQVMsQ0FBQyxDQUFDO0lBRXRFLENBQUM7SUFFRCxzQ0FBc0M7SUFDdEMsUUFBUSxDQUFDLEtBQWM7UUFDbkIsSUFBSSxDQUFDLFlBQVksQ0FBQyxLQUFLLEdBQUcsS0FBSyxDQUFDO0lBQ3BDLENBQUM7Q0FFSjtBQXJERCwrQkFxREMifQ==\",\"assetPath\":\"Assets/_Scripts/UI/Panel_InGame.ts\",\"manifest\":{\"properties\":[{\"assembly\":\"UnityEngine.UI\",\"name\":\"btn_swap\",\"type\":\"UnityEngine.UI.Button\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]},{\"assembly\":\"UnityEngine.UI\",\"name\":\"btn_forward\",\"type\":\"UnityEngine.UI.Button\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]},{\"assembly\":\"UnityEngine.UI\",\"name\":\"btn_back\",\"type\":\"UnityEngine.UI.Button\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]},{\"assembly\":\"UnityEngine.UI\",\"name\":\"txt_Score\",\"type\":\"UnityEngine.UI.Text\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]},{\"assembly\":\"UnityEngine.UI\",\"name\":\"slider_Hpbar\",\"type\":\"UnityEngine.UI.Slider\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]}],\"name\":\"Panel_InGame\",\"description\":\"\",\"hasAnimatorMove\":false},\"isCompiled\":true}"
+  typescriptHash: 44b29af85ee599b0d0f1b3e2bdda1128
+  onlyWriteTrigger: 0

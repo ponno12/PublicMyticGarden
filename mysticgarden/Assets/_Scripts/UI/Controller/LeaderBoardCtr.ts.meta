@@ -1,0 +1,77 @@
+fileFormatVersion: 2
+guid: b4f273c170aa7e14a93760a9ffb13aa7
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: "{\"source\":\"\\\"use strict\\\";\\r\\nObject.defineProperty(exports,
+    \\\"__esModule\\\", { value: true });\\r\\nexports.RollingState = void 0;\\r\\nconst
+    UnityEngine_1 = require(\\\"UnityEngine\\\");\\r\\nconst ZEPETO_Script_1 = require(\\\"ZEPETO.Script\\\");\\r\\nconst
+    LeaderboardMng_1 = require(\\\"../../Manager/LeaderboardMng\\\");\\r\\nvar RollingState;\\r\\n(function
+    (RollingState) {\\r\\n    RollingState[RollingState[\\\"Stay\\\"] = 0] = \\\"Stay\\\";\\r\\n   
+    RollingState[RollingState[\\\"Move\\\"] = 1] = \\\"Move\\\";\\r\\n})(RollingState
+    = exports.RollingState || (exports.RollingState = {}));\\r\\nclass LeaderBoardCtr
+    extends ZEPETO_Script_1.ZepetoScriptBehaviour {\\r\\n    constructor() {\\r\\n       
+    super(...arguments);\\r\\n        this.rollingTime = 1;\\r\\n        this.stayTime
+    = 1;\\r\\n        this.startPosX = 0;\\r\\n        this.imageWidth = 850;\\r\\n       
+    this.endImageIndex = 0;\\r\\n        this.tempTime = 0;\\r\\n        // Learboad\uC5D0\uC11C
+    \uAC00\uC838\uC624\uAE30\\r\\n        // public SetRollingImage() {\\r\\n       
+    //     //let tempuserid = PlayerMng.Instance.CurPlayerID;\\r\\n        //    
+    let learboardImages = LeaderboardMng.Instance.UserSprite;\\r\\n        //    
+    for (let i = 0; i < tempuserid.length; ++i) {\\r\\n        //         this.images[i]
+    = learboardImages[i];\\r\\n        //     }\\r\\n        // }\\r\\n    }\\r\\n   
+    Start() {\\r\\n        this.Init();\\r\\n    }\\r\\n    Init() {\\r\\n       
+    //\uB9AC\uB354\uBCF4\uB4DC\uC5D0 \uBB3C\uB9AC\uAE30\\r\\n        if (ZEPETO_Script_1.ZepetoScriptBehaviour.op_Equality(LeaderboardMng_1.default.Instance.leaderboardCtr,
+    null))\\r\\n            LeaderboardMng_1.default.Instance.leaderboardCtr = this;\\r\\n       
+    //let tempuserid = PlayerMng.Instance.CurPlayerID;\\r\\n        // let learboardImages
+    = LeaderboardMng.Instance.UserSprite;\\r\\n        // if (learboardImages ==
+    null)\\r\\n        //     console.log(\\\"\uB9AC\uB354\uBCF4\uB4DC \uC774\uBBF8\uC9C0
+    null\\\")\\r\\n        // else {\\r\\n        //     for (let i = 0; i < tempuserid.length;
+    ++i) {\\r\\n        //         this.images[i] = learboardImages[i];\\r\\n       
+    //     }\\r\\n        // }\\r\\n        if (this.startPos != null)\\r\\n           
+    this.startPos.splice(0);\\r\\n        else\\r\\n            this.startPos = new
+    Array();\\r\\n        // \uCD08\uAE30 \uC138\uD305.                 \\r\\n       
+    for (let i = 0; i < this.imageItem.length; ++i) {\\r\\n            // \uC774\uBBF8\uC9C0
+    \uBCC0\uACBD. \\r\\n            this.imageItem[i].sprite = this.images[i];\\r\\n           
+    // \uC704\uCE58. \\r\\n            let tempPos = new UnityEngine_1.Vector3(0,
+    0, 0);\\r\\n            tempPos.x = this.imageWidth * i;\\r\\n            this.imageItem[i].transform.localPosition
+    = tempPos;\\r\\n            // \uC778\uB371\uC2A4.\\r\\n            this.endImageIndex
+    = i;\\r\\n            // \uC2DC\uC791 \uC704\uCE58\uAC12.\\r\\n            this.startPos.push(tempPos);\\r\\n       
+    }\\r\\n        this.tempTime = 0;\\r\\n        this.curState = RollingState.Stay;\\r\\n       
+    this.newPos = UnityEngine_1.Vector3.zero;\\r\\n    }\\r\\n    Update() {\\r\\n       
+    switch (this.curState) {\\r\\n            case RollingState.Stay:\\r\\n               
+    this.tempTime += UnityEngine_1.Time.deltaTime;\\r\\n                if (this.tempTime
+    >= this.stayTime) {\\r\\n                    this.curState = RollingState.Move;\\r\\n                   
+    this.tempTime = 0;\\r\\n                }\\r\\n                break;\\r\\n           
+    case RollingState.Move:\\r\\n                this.tempTime += UnityEngine_1.Time.deltaTime;\\r\\n               
+    for (let i = 0; i < this.imageItem.length; ++i) {\\r\\n                    this.newPos.x
+    = UnityEngine_1.Mathf.Lerp(this.startPos[i].x, this.startPos[i].x - this.imageWidth,
+    this.tempTime / this.rollingTime);\\r\\n                    this.imageItem[i].transform.localPosition
+    = this.newPos;\\r\\n                }\\r\\n                if (this.tempTime
+    >= this.rollingTime) {\\r\\n                    this.curState = RollingState.Stay;\\r\\n                   
+    // \uBAA9\uD45C \uC704\uCE58 \uACE0\uC815. \\r\\n                    for (let
+    i = 0; i < this.imageItem.length; ++i) {\\r\\n                        this.newPos.x
+    = this.startPos[i].x - this.imageWidth;\\r\\n                        this.imageItem[i].transform.localPosition
+    = this.newPos;\\r\\n                    }\\r\\n                    // \uC704\uCE58
+    \uC774\uB3D9. \\r\\n                    let tempItem = this.imageItem[0];\\r\\n                   
+    this.imageItem.splice(0, 1);\\r\\n                    this.imageItem.push(tempItem);\\r\\n                   
+    ++this.endImageIndex;\\r\\n                    if (this.endImageIndex >= this.images.length)\\r\\n                       
+    this.endImageIndex = 0;\\r\\n                    tempItem.sprite = this.images[this.endImageIndex];\\r\\n                   
+    this.tempTime = 0;\\r\\n                }\\r\\n                break;\\r\\n       
+    }\\r\\n    }\\r\\n}\\r\\nexports.default = LeaderBoardCtr;\\r\\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiTGVhZGVyQm9hcmRDdHIuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJMZWFkZXJCb2FyZEN0ci50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7QUFBQSw2Q0FBNkY7QUFFN0YsaURBQXFEO0FBQ3JELGlFQUEwRDtBQUUxRCxJQUFZLFlBR1g7QUFIRCxXQUFZLFlBQVk7SUFDcEIsK0NBQUksQ0FBQTtJQUNKLCtDQUFJLENBQUE7QUFDUixDQUFDLEVBSFcsWUFBWSxHQUFaLG9CQUFZLEtBQVosb0JBQVksUUFHdkI7QUFFRCxNQUFxQixjQUFlLFNBQVEscUNBQXFCO0lBQWpFOztRQUtXLGdCQUFXLEdBQVcsQ0FBQyxDQUFDO1FBQ3hCLGFBQVEsR0FBVyxDQUFDLENBQUM7UUFFckIsY0FBUyxHQUFXLENBQUMsQ0FBQztRQUN0QixlQUFVLEdBQVcsR0FBRyxDQUFDO1FBQ3hCLGtCQUFhLEdBQVcsQ0FBQyxDQUFDO1FBRzFCLGFBQVEsR0FBVyxDQUFDLENBQUM7UUFtRzdCLGtCQUFrQjtRQUNsQiw2QkFBNkI7UUFFN0IseURBQXlEO1FBQ3pELGdFQUFnRTtRQUNoRSxvREFBb0Q7UUFDcEQsK0NBQStDO1FBQy9DLFFBQVE7UUFDUixJQUFJO0lBQ1IsQ0FBQztJQXhHRyxLQUFLO1FBQ0QsSUFBSSxDQUFDLElBQUksRUFBRSxDQUFDO0lBQ2hCLENBQUM7SUFFRCxJQUFJO1FBRUEsV0FBVztRQUNYLElBaENDLHFDQUFxQixDQWlJczdGLFdBQVksQ0FqR3I5Rix3QkFBYyxDQUFDLFFBQVEsQ0FBQyxjQUFjLEVBQUksSUFBSTtZQUM3Qyx3QkFBYyxDQUFDLFFBQVEsQ0FBQyxjQUFjLEdBQUcsSUFBSSxDQUFDO1FBQ2xELGtEQUFrRDtRQUNsRCw0REFBNEQ7UUFDNUQsK0JBQStCO1FBQy9CLG1DQUFtQztRQUNuQyxTQUFTO1FBQ1Qsb0RBQW9EO1FBRXBELCtDQUErQztRQUMvQyxRQUFRO1FBQ1IsSUFBSTtRQUdKLElBQUksSUFBSSxDQUFDLFFBQVEsSUFBSSxJ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\",\"assetPath\":\"Assets/_Scripts/UI/Controller/LeaderBoardCtr.ts\",\"manifest\":{\"properties\":[{\"assembly\":\"UnityEngine.CoreModule\",\"name\":\"images\",\"type\":\"UnityEngine.Sprite[]\",\"isArray\":true,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]},{\"assembly\":\"UnityEngine.UI\",\"name\":\"imageItem\",\"type\":\"UnityEngine.UI.Image[]\",\"isArray\":true,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]},{\"assembly\":\"mscorlib\",\"name\":\"rollingTime\",\"type\":\"System.Single\",\"isArray\":false,\"initValue\":[\"1\"],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]},{\"assembly\":\"mscorlib\",\"name\":\"stayTime\",\"type\":\"System.Single\",\"isArray\":false,\"initValue\":[\"1\"],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]},{\"assembly\":\"mscorlib\",\"name\":\"startPosX\",\"type\":\"System.Single\",\"isArray\":false,\"initValue\":[\"0\"],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]},{\"assembly\":\"mscorlib\",\"name\":\"imageWidth\",\"type\":\"System.Single\",\"isArray\":false,\"initValue\":[\"850\"],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]}],\"name\":\"LeaderBoardCtr\",\"description\":\"\",\"hasAnimatorMove\":false},\"isCompiled\":true}"
+  typescriptHash: 5ebee29747f7ebcd3beb5f6cdec6bf4c
+  onlyWriteTrigger: 0
